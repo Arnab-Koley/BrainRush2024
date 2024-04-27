@@ -2,9 +2,9 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import data from "team_data.js";
-import { Preahvihear } from "next/font/google";
+import { Bangers, Preahvihear } from "next/font/google";
 
-const preahvihear = Preahvihear({
+const preahvihear = Bangers({
   subsets: ["latin"],
   weight: ["400"],
 });

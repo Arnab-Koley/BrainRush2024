@@ -4,10 +4,10 @@ import React from "react";
 import Image from "next/image";
 import sponsor1 from "public/assets/images/ardent_logo.png";
 import sponsor2 from "public/assets/images/unit.png";
-import { Metal_Mania } from "next/font/google";
+import { Bangers, Metal_Mania } from "next/font/google";
 import Link from "next/link";
 
-const preahvihear = Metal_Mania({
+const preahvihear = Bangers({
   subsets: ["latin"],
   weight: ["400"],
 });

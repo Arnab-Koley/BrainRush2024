@@ -7,11 +7,11 @@
     align-items: center;
     justify-content: center;
     /* text-shadow: -1px 3px 6px rgba(227, 112, 41, 0.79); */
-    font-family: 'Metal Mania', cursive;
-    font-family: 'Metal Mania', serif;
+    font-family: 'Bangers', cursive;
+    font-family: 'Bangers', serif;
 }
 .metal-mania-regular {
-    font-family: "Metal Mania", system-ui;
+    font-family: "Bangers", system-ui;
     font-weight: 400;
     font-style: normal;
   }
@@ -38,7 +38,7 @@
     margin-bottom: 1rem;
     display: flex;
     justify-content: space-around;
-    font-family: 'Metal Mania', cursive;
+    font-family: 'Bangers', cursive;
     /* font-family: 'Lobster', cursive; */
     /* font-family: 'Playfair Display', serif; */
 }

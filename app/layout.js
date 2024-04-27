@@ -3,7 +3,7 @@ import { Analytics } from "@vercel/analytics/react";
 import Hero from "@components/HeroSection/Hero";
 import Provider from "@components/Provider";
 import "@styles/globals.css";
-import { Metal_Mania } from "next/font/google";
+import { Bangers, Metal_Mania } from "next/font/google";
 import { Provider as ReduxProvider } from "react-redux";
 import { store } from "@Reducers/store";
 import Nav from "@components/Nav/Nav";
@@ -11,7 +11,7 @@ import { useEffect, useState } from "react";
 import Loader from "@components/Loader/Loader";
 import UniversalLoader from "@components/Loader/UniversalLoader";
 
-const inter = Metal_Mania({ subsets: ["latin"] ,
+const inter = Bangers({ subsets: ["latin"] ,
 weight: ["400"],});
 
 // export const metadata = {

@@ -2,10 +2,10 @@ import React from "react";
 import Image from "next/image";
 import Countdown from "./../Countdown/Countdown";
 import logo from "./../../public/assets/images/kodikasLogo.png";
-import { Metal_Mania } from "next/font/google";
+import { Bangers } from "next/font/google";
 import './hero.css';
 
-const preahvihear = Metal_Mania({
+const preahvihear = Bangers({
   subsets: ["latin"],
   weight: ["400"],
 });

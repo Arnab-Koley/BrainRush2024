@@ -2,11 +2,11 @@
 import { useSession } from "next-auth/react";
 import React, { useEffect, useState } from "react";
 import "./AllTeams.css";
-import { Preahvihear } from "next/font/google";
+import { Bangers, Preahvihear } from "next/font/google";
 import axios from "axios";
 import Loader from "@components/Loader/Loader";
 
-const preahvihear = Preahvihear({
+const preahvihear = Bangers({
   subsets: ["latin"],
   weight: ["400"],
 });

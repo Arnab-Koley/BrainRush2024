@@ -2,11 +2,20 @@
 @tailwind components;
 @tailwind utilities;
 
+
+
+@import url('https://fonts.gstatic.com');
+@import url('https://fonts.googleapis.com');
+@import url('https://fonts.googleapis.com/css2?family=Bangers&display=swap"');
 /* Apply Marvel font to all text */
 * {
-    font-family: 'Arial Black', sans-serif; /* Substitute with a Marvel-like font */
+    font-family: 'Bangers', sans-serif; /* Substitute with a Marvel-like font */
 }
-
+.bangers-regular {
+    font-family: "Bangers", system-ui;
+    font-weight: 400;
+    font-style: normal;
+  }
 /* Set base colors */
 body {
     color: #ff0000; /* Red font color */

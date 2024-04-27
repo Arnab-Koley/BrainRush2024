@@ -7,9 +7,9 @@ import AboutMain from "./AboutMain";
 import Venue from "@components/Venue/Venue";
 // import Details from "@components/Details/Details";
 import Team from "@components/Team/Team";
-import { Metal_Mania } from "next/font/google";
+import { Bangers } from "next/font/google";
 
-const preahvihear = Metal_Mania({
+const preahvihear = Bangers({
   subsets: ["latin"],
   weight: ["400"],
 });

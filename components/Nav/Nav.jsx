@@ -11,12 +11,12 @@ import { setProfile } from "@Reducers/features/profile";
 import { setRequest } from "@Reducers/features/requests";
 import "./Nav.css";
 
-import { Metal_Mania } from "next/font/google";
+import { Bangers, Metal_Mania } from "next/font/google";
 import { useRouter } from "next/navigation";
 import axios from "axios";
 // import { logo } from ".@/public";
 
-const preahvihear = Metal_Mania({
+const preahvihear = Bangers({
   subsets: ["latin"],
   weight: ["400"],
 });
