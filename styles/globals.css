@@ -2,45 +2,25 @@
 @tailwind components;
 @tailwind utilities;
 
-
-
-/* Import Google Fonts */
-/* Import Google Fonts */
-@import url('https://fonts.gstatic.com');
-@import url('https://fonts.googleapis.com');
-@import url('https://fonts.googleapis.com/css2?family=Jersey+15&family=Metal+Mania&display=swap');
-
-/* Apply Harry Potter font to all text */
+/* Apply Marvel font to all text */
 * {
-    font-family: 'Metal Mania', cursive;
-    color: #ffd700; /* Golden yellow color */
+    font-family: 'Arial Black', sans-serif; /* Substitute with a Marvel-like font */
 }
 
-.metal-mania-regular {
-    font-family: "Metal Mania", system-ui;
-    font-weight: 400;
-    font-style: normal;
-}
-
-/* Create a magical radial gradient background with stars */
+/* Set base colors */
 body {
-    background: radial-gradient(circle at center, #000033 0%, #000033 30%, #800000 50%, #000033 70%, #000033 100%), linear-gradient(135deg, #000000, #3a0a00, #8b0000, #ff0000, #8b0000, #3a0a00, #000000) !important; /* Deep blue with red in between */
-    background-size: cover;
-    animation: gradientAnimation 15s ease infinite;
-    cursor: url('/assets/images/wand.png'), auto;
-    
+    color: #ff0000; /* Red font color */
 }
 
-@keyframes gradientAnimation {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
+/* Create a heroic radial gradient background */
+body {
+    background: radial-gradient(circle at center, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5) 30%, rgba(255, 255, 255, 0) 50%, rgba(255, 255, 255, 0) 70%, rgba(255, 255, 255, 0) 100%), url('/assets/images/marvel_bg.jpg') no-repeat center center fixed; /* White gradient with Marvel background */
+    background-size: cover;
 }
 
 /* Add glow effect to headings */
 h1, h2, h3, h4, h5, h6 {
-    font-size: 8px; /* Adjust the font size as needed */
-    text-shadow: 0 0 10px #000, 0 0 20px #000, 0 0 30px #000, 0 0 40px #000, 0 0 50px #ffd700, 0 0 60px #ffd700, 0 0 70px #ffd700; /* Golden yellow glow */
+    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #fff, 0 0 50px #ff0000, 0 0 60px #ff0000, 0 0 70px #ff0000; /* White glow */
 }
 
 /* Create flickering effect for buttons */
@@ -57,7 +37,7 @@ button {
     }
 }
 
-/* Add magical glow effect to links */
+/* Add heroic glow effect to links */
 a {
     text-decoration: none;
     position: relative;
@@ -71,7 +51,7 @@ a:before {
     height: 3px;
     bottom: 0;
     left: 0;
-    background-color: #ffd700; /* Golden yellow glow */
+    background-color: #ff0000; /* Red glow */
     visibility: hidden;
     transform: scaleX(0);
     transition: all 0.3s ease-in-out 0s;
@@ -93,6 +73,3 @@ a:hover:before {
 .example {
     animation: floatAnimation 3s ease-in-out infinite;
 }
-
-
-
