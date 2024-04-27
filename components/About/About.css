@@ -1,0 +1,64 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@500&family=Open+Sans:wght@500&family=Source+Code+Pro:wght@600&display=swap');
+
+.aboutHeader {
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    /* text-shadow: -1px 3px 6px rgba(227, 112, 41, 0.79); */
+    font-family: 'Metal Mania', cursive;
+    font-family: 'Metal Mania', serif;
+}
+.metal-mania-regular {
+    font-family: "Metal Mania", system-ui;
+    font-weight: 400;
+    font-style: normal;
+  }
+.aboutHeader h2 {
+    text-align: center;
+    /* color: white; */
+    font-size: 72px;
+    background: -webkit-linear-gradient(rgb(24, 13, 238), rgb(216, 100, 27));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 3rem;
+    font-weight: bolder;
+}
+
+.aboutHeader p {
+    text-align: center;
+    color: rgb(103, 103, 103);
+    /* font-size: 3rem; */
+    /* font-weight: bold; */
+}
+
+.aboutbuttons {
+    margin-top: 5rem;
+    margin-bottom: 1rem;
+    display: flex;
+    justify-content: space-around;
+    font-family: 'Metal Mania', cursive;
+    /* font-family: 'Lobster', cursive; */
+    /* font-family: 'Playfair Display', serif; */
+}
+
+.notActiveClass {
+    color: #424140;
+    font-weight: bold;
+}
+
+.activeClass {
+    /* /* color: #233bee; */
+    font-weight: bold;
+    /* border-bottom: 2px solid;
+    border-color: #E37029; */
+}
+
+hr {
+    color: #fff;
+}
+
+.date {
+    font-family: 'Lobster', cursive;
+}
