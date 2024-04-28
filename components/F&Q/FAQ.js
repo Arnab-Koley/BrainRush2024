@@ -3,6 +3,7 @@ import Heading from "@components/Heading/Heading";
 import { Bangers } from "next/font/google";
 import "./faq.css";
 
+
 const preahvihear = Bangers({
   subsets: ["latin"],
   weight: ["400"],
@@ -63,10 +64,16 @@ const FAQ = () => {
           <div className="faq-item" key={index}>
             <details>
               <summary>
+                <img
+                  src="/assets/images/thorhammer.png"
+                  alt="Thor's Hammer"
+                  className="thor-hammer"
+                />
                 <span className={preahvihear.className}>{item.question}</span>
               </summary>
               <p>{item.answer}</p>
             </details>
+            {index < faqData.length - 1 && <hr className="hr" />} {/* Horizontal rule */}
           </div>
         ))}
       </div>
