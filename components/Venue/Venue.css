@@ -1,37 +1,22 @@
-.bg-gray-mod {
-  background-color: var(--bg-color);
+/* Venue section styling */
+#venue {
+  background-color: #00205b; /* Marvel Blue */
 }
 
-.img {
-  display: block;
+/* Heading */
+.aboutHeader h2 {
+  /* Use Marvel Red gradient for text */
+  background: -webkit-linear-gradient(#ed1d24, #ed1d24);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
-.swiper-slide {
-  background-size: cover;
-  height: auto;
+/* Text */
+.aboutHeader p {
+  color: #ffd700; /* Marvel Gold */
 }
 
-.swiper {
-  width: 100%;
-  height: 100%;
-}
-
-.swiper .swiper-slide {
-  height: auto;
-}
-
-.swiper-slide img {
-  display: block;
-  width: 100%;
-  height: 80%;
-  /* padding-top: 50px; */
-  /* margin-top: 25px; */
-  top: -125px;
-
-  object-fit: cover;
-  border-radius: 15px;
-}
-
+/* Google Map */
 .m {
   height: 20rem;
   margin-bottom: 7.5rem;
@@ -40,6 +25,10 @@
   max-width: 100%;
 }
 
-#venue {
-  background-color: var(--bg-color);
+/* Icon and address */
+.aboutHeader .flex.items-center.mb-10 img {
+  filter: invert(100%); /* Invert color for icon */
+}
+.aboutHeader .flex.items-center.mb-10 p {
+  color: #fff; /* White text */
 }

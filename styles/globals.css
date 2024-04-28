@@ -1,8 +1,10 @@
+/* Remove Tailwind CSS import */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-
+/* Import the background image */
+/* import spacebg from 'public/assets/images/spacebg.jpg'; */
 
 @import url('https://fonts.gstatic.com');
 @import url('https://fonts.googleapis.com');
@@ -15,16 +17,14 @@
     font-family: "Bangers", system-ui;
     font-weight: 400;
     font-style: normal;
-  }
+}
+
 /* Set base colors */
 body {
     color: #ff0000; /* Red font color */
-}
-
-/* Create a heroic radial gradient background */
-body {
-    background: radial-gradient(circle at center, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5) 30%, rgba(255, 255, 255, 0) 50%, rgba(255, 255, 255, 0) 70%, rgba(255, 255, 255, 0) 100%), url('/assets/images/marvel_bg.jpg') no-repeat center center fixed; /* White gradient with Marvel background */
-    background-size: cover;
+    /* Set the background image */
+    background-image: url('/assets/images/spacebeg.jpg'); /* Adjust the path to match your directory structure */
+    background-repeat: repeat; /* Repeat the background image */
 }
 
 /* Add glow effect to headings */
