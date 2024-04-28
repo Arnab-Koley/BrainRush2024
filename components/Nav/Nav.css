@@ -1,57 +1,47 @@
 /* Navbar styling */
 .navbar {
-    background-color: #7f0909; /* Gryffindor red */
-    padding: 1rem;
-  }
-  
-  .navbar a {
-    color: #ffd700; /* Golden yellow */
-    padding: 0.5rem 1rem;
-    transition: color 0.3s ease-in-out;
-  }
-  
-  .navbar a:hover {
-    color: #250602; /* White on hover */
-  }
-  
-  /* My Team */
-  .navLinks {
-    color: #ffd700; /* Golden yellow */
-    text-decoration: none;
-    display: inline-block;
-    padding: 0px 10px;
-    position: relative;
-  }
-  
-  .navLinks:hover {
-    color: #2f0303; /* White on hover */
-    text-decoration: none;
-  }
-  
-  .navLinks:after {
-    content: "";
-    position: absolute;
-    bottom: -2px;
-    left: 50%;
-    width: 0;
-    height: 2px;
-    background: #ffd700; /* Golden yellow */
-    transition: width 0.5s ease, left 0.5s ease;
-  }
-  
-  .navLinks:hover:after {
-    width: 100%;
-    left: 0;
-  }
-  
-  /* Harry Potter themed modifications */
-  #navHeader {
-    padding: 0 3.5rem;
-    background-color: #7f0909; /* Gryffindor red */
-    color: #ffd700; /* Golden yellow */
-  }
-  
-  #logoTag {
-    font-family: 'Harry P', cursive; /* Use a Harry Potter themed font */
-  }
-  
+  background-color: #000; /* Marvel Black */
+  padding: 1rem;
+}
+
+.navbar a {
+  color: #ffd700; /* Marvel Gold */
+  padding: 0.5rem 1rem;
+  transition: color 0.3s ease-in-out;
+  font-family: 'Bangers', sans-serif; /* Apply Marvel font */
+}
+
+.navbar a:hover {
+  color: #ff0000; /* Marvel Red */
+}
+
+/* My Team */
+.navLinks {
+  color: #ffd700; /* Marvel Gold */
+  text-decoration: none;
+  display: inline-block;
+  padding: 0px 10px;
+  position: relative;
+  font-family: 'Bangers', sans-serif; /* Apply Marvel font */
+}
+
+.navLinks:hover {
+  color: #ff0000; /* Marvel Red */
+  text-decoration: none;
+}
+
+.navLinks:after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: #ffd700; /* Marvel Gold */
+  transition: width 0.5s ease, left 0.5s ease;
+}
+
+.navLinks:hover:after {
+  width: 100%;
+  left: 0;
+}
