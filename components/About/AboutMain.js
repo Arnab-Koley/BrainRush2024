@@ -4,9 +4,9 @@ import Image from "next/image";
 import About1 from "public/assets/images/About1.JPG";
 import About2 from "public/assets/images/About2.JPG";
 import About3 from "public/assets/images/About3.JPG";
-import { Preahvihear } from "next/font/google";
+import { Bangers, Preahvihear } from "next/font/google";
 
-const preahvihear = Preahvihear({
+const preahvihear = Bangers({
   subsets: ["latin"],
   weight: ["400"],
 });

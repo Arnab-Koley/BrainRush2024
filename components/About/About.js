@@ -1,11 +1,8 @@
-"use client";
-import React from "react";
+import React, { useState } from "react";
 import Heading from "./../Heading/Heading";
 import "./About.css";
-import { useState } from "react";
 import AboutMain from "./AboutMain";
 import Venue from "@components/Venue/Venue";
-// import Details from "@components/Details/Details";
 import Team from "@components/Team/Team";
 import { Bangers } from "next/font/google";
 
@@ -14,97 +11,71 @@ const preahvihear = Bangers({
   weight: ["400"],
 });
 
+const tabHeadings = {
+  about: "About Us",
+  venue: "Our Venue",
+  team: "Our Team",
+};
+
 function About() {
-  const [about, setAbout] = useState(true);
-  const [venue, setVenue] = useState(false);
-  const [schedule, setSchedule] = useState(false);
-  // var headTitle = "About Us";
-  function aboutRenderComponent() {
-    if (about === true) {
-      // headTitle = "About Us";
-      return <AboutMain />;
-    } else if (venue === true) {
-      // headTitle = "Our Venue";
-      return <Venue />;
-    } else if (schedule === true) {
-      // headTitle = "Our Schedule";
-      return <Team />;
-    }
-  }
+  const [activeTab, setActiveTab] = useState("about");
+
+  const handleTabChange = (tab) => {
+    setActiveTab(tab);
+  };
+
   return (
     <>
-      <section
-        className="overflow-hidden  px-5 sm:px-20  "
-        id="about"
-        // style={{
-        //   // background: rgb(255,248,227);
-        //   background:
-        //     "linear-gradient(351deg, rgba(255,248,227,1) 3%, rgba(117,234,231,1) 46%, rgba(159,204,237,1) 95%);",
-        // }}
-      >
+      <section className="overflow-hidden px-5 sm:px-20" id="about">
         <Heading
-          title={about ? "About Us" : venue ? "Our Venue" : "Organising Team"}
+          title={tabHeadings[activeTab]}
           header={"Know more About"}
           hearerspan="BrainRush 2k24"
           subheader="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
           subheaderspan1="In convallis tortor eros. Donec vitae tortor lacus."
           subheaderspan2="Phasellus aliquam ante in maximus."
         />
-
-        <div>
-          <div className="aboutbuttons">
+        <div className="about-section">
+          <div className="about-buttons-container">
             <div
-              onClick={() => {
-                setAbout(true);
-                setSchedule(false);
-                setVenue(false);
-              }}
+              onClick={() => handleTabChange("about")}
               className={
-                about
-                  ? "activeClass text-subHeaderText text-bold  text-2xl cursor-pointer"
-                  : "notActiveClass text-subHeaderText text-bold text-4xl cursor-pointer "
+                activeTab === "about"
+                  ? "about-button active"
+                  : "about-button inactive"
               }
             >
-              <span className={preahvihear.className}>
-                {about ? "About Us" : "..."}
-              </span>
+              <span className={preahvihear.className}>About Us</span>
             </div>
             <div
-              onClick={() => {
-                setAbout(false);
-                setSchedule(false);
-                setVenue(true);
-              }}
+              onClick={() => handleTabChange("venue")}
               className={
-                venue
-                  ? "activeClass text-subHeaderText text-bold text-2xl cursor-pointer"
-                  : "notActiveClass text-subHeaderText text-bold text-4xl cursor-pointer "
+                activeTab === "venue"
+                  ? "about-button active"
+                  : "about-button inactive"
               }
             >
-              <span className={preahvihear.className}>
-                {venue ? "Our Venue" : "..."}
-              </span>
+              <span className={preahvihear.className}>Our Venue</span>
             </div>
             <div
-              onClick={() => {
-                setAbout(false);
-                setSchedule(true);
-                setVenue(false);
-              }}
+              onClick={() => handleTabChange("team")}
               className={
-                schedule
-                  ? "activeClass text-subHeaderText text-bold  text-2xl cursor-pointer"
-                  : "notActiveClass text-subHeaderText text-bold text-4xl   cursor-pointer"
+                activeTab === "team"
+                  ? "about-button active"
+                  : "about-button inactive"
               }
             >
-              <span className={preahvihear.className}>
-                {schedule ? "Our Team" : "..."}
-              </span>
+              <span className={preahvihear.className}>Our Team</span>
             </div>
+            {/* Add the image below the text */}
+            <img src="assets/images/spiderman.png" alt="Spiderman" />
           </div>
-          <hr />
+          <div className="about-content">
+            {activeTab === "about" && <AboutMain />}
+            {activeTab === "venue" && <Venue />}
+            {activeTab === "team" && <Team />}
+          </div>
         </div>
-        <div>{aboutRenderComponent()}</div>
       </section>
     </>
   );
