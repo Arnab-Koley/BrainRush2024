@@ -1,0 +1,95 @@
+/* Team section styles */
+.team-section {
+    background-color: #a80101;
+    padding: 30px;
+    width: 80%;
+    border-radius: 20px;
+    margin-top: 50px; /* Add space above the team section */
+  }
+  
+  /* Heading styles */
+  .heading {
+    color: #fff;
+    font-size: 36px;
+    margin-bottom: 20px;
+  }
+  
+  /* Year button styles */
+  .year-button {
+    color: #ffffff; /* White text */
+  font-family: 'Bangers', cursive;
+  font-size: 24px; /* Larger font size */
+  cursor: pointer;
+  text-align: center;
+  padding: 15px 30px; /* Increase padding */
+  transition: background-color 0.3s, transform 0.3s;
+  border: none;
+  outline: none;
+  background-color: transparent;
+  }
+
+  .year-button:hover {
+    background-color: #fffcfc; /* Dark background color on hover */
+    color: rgb(255, 0, 0);
+    transform: scale(1.1);
+  }
+  
+  .year-button.active {
+    font-weight: bold;
+    background-color: #ffffff;
+    color: rgb(251, 2, 2);
+  }
+  
+
+  /* Year content styles */
+  .year-content {
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+    margin-top: 10px; /* Add space between button and content */
+  }
+  
+  /* Active year styles */
+  .team-year.active .year-content {
+    max-height: 1000px; /* Adjust the maximum height as needed */
+  }
+  
+  /* Team scroll container styles */
+  .team-scroll-container {
+    display: flex;
+    overflow-x: auto;
+    gap: 20px;
+    padding: 20px 0;
+  }
+  
+  /* Team member styles */
+  .team-member {
+    flex: 0 0 auto;
+    text-align: center;
+  }
+  
+  /* Team member photo styles */
+  .team-member-photo {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin: 0 auto;
+  }
+  
+  /* Team member name styles */
+  .team-member-name {
+    margin-top: 10px;
+    font-weight: bold;
+    font-size: 18px;
+  }
+  
+  /* Red text color for team member names */
+  .red-text {
+    color: red;
+  }
+  
+  /* Team member description styles */
+  .team-member-description {
+    font-size: 24px;
+    color: #fff;
+  }

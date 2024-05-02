@@ -1,8 +1,9 @@
-import Image from "next/image";
+import React, { useState } from "react";
 import Link from "next/link";
-import React from "react";
-import data from "team_data.js";
-import { Bangers, Preahvihear } from "next/font/google";
+import teamDetails from "./team_data.js";
+import Heading from "@components/Heading/Heading"; // Import Heading component
+import { Bangers } from "next/font/google";
+import "./Team.css";
 
 const preahvihear = Bangers({
   subsets: ["latin"],
@@ -10,33 +11,57 @@ const preahvihear = Bangers({
 });
 
 const Team = () => {
-  return (
-    <>
-      <section className="bg-marvel-blue py-8 px-4 mx-auto max-w-screen-xl text-center lg:py-16 lg:px-6">
-        <div className="grid gap-8 lg:gap-16 grid-cols-2 lg:grid-cols-4 md:grid-cols-3">
-          {data.map((e, ind) => {
-            return (
-              <div key={ind} className="text-center text-gray-500 p-3 relative">
-                <img
-                  className="object-contain mx-auto p-1 ring-4 ring-marvel-red rounded-full"
-                  src={e.photo}
-                  alt=""
-                />
+  // Group team members by year
+  const groupedTeamMembers = teamDetails.reduce((acc, member) => {
+    const year = member.year.split("/")[0].trim(); // Extract year from the string
+    if (!acc[year]) {
+      acc[year] = [];
+    }
+    acc[year].push(member);
+    return acc;
+  }, {});
 
-                <h3 className="mt-4 md:text-2xl font-bold tracking-tight text-headerText hover:underline decoration-marvel-gold">
-                  <Link href={e.whatsapp} target="_blank" className={preahvihear.className}>
-                    {e.name}
-                  </Link>
-                </h3>
-                <p className="md:text-xl text-xs text-subHeaderText">
-                  <span className={preahvihear.className}>{e.year}</span>
-                </p>
-              </div>
-            );
-          })}
-        </div>
-      </section>
-    </>
+  // State to manage the active year
+  const [activeYear, setActiveYear] = useState(null);
+
+  // Function to toggle active year
+  const toggleYear = (year) => {
+    setActiveYear(activeYear === year ? null : year);
+  };
+
+  return (
+    <section className="team-section bg-marvel-blue py-8 px-4 mx-auto max-w-screen-xl text-center lg:py-16 lg:px-6">
+      {/* Our Team Heading */}
+      <Heading title="Our Team" />
+
+      {/* Render year buttons */}
+      <div className="flex justify-center gap-4">
+        {Object.keys(groupedTeamMembers).map((year) => (
+          <button
+            key={year}
+            className={`year-button ${activeYear === year ? 'active' : ''}`}
+            onClick={() => toggleYear(year)}
+          >
+            {year}
+          </button>
+        ))}
+      </div>
+
+      {/* Render team members */}
+      <div className="team-scroll-container">
+        {activeYear && groupedTeamMembers[activeYear].map((member, index) => (
+          <div key={index} className="team-member">
+            <img className="team-member-photo" src={member.photo} alt="" />
+            <h3 className="team-member-name red-text">
+              <Link href={member.whatsapp} target="_blank" className={preahvihear.className}>
+                {member.name}
+              </Link>
+            </h3>
+            <p className="team-member-description">{member.emoji}</p>
+          </div>
+        ))}
+      </div>
+    </section>
   );
 };
 
