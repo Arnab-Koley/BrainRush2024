@@ -1,38 +1,54 @@
 .faq-container {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
-    text-align: center; /* Center align FAQ container */
-  }
-  
-  .faq-item {
-    margin-bottom: 20px;
-  }
-  
-  .faq-item summary {
-    font-size: 20px;
-    font-weight: bold;
-    cursor: pointer;
-    list-style: none; /* Remove default bullet point */
-    display: flex; /* Use flexbox to align hammer and question */
-    align-items: center; /* Align items vertically */
-  }
-  
-  .faq-item summary::-webkit-details-marker {
-    display: none; /* Hide default arrow */
-  }
-  
-  .thor-hammer {
-    width: 35px; /* Adjust size as needed */
-    height: 35px; /* Adjust size as needed */
-    margin-right: 8px; /* Adjust spacing as needed */
-  }
-  
-  .faq-item p {
-    text-align: left; /* Left-align answers */
-  }
-  
-  .hr {
-    margin-top: 20px; /* Adjust spacing between questions */
-  }
-  
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  text-align: center;
+   /* Center align FAQ container */
+}
+
+.faq-item {
+  margin-bottom: 20px;
+  border: 1px solid #ccc; /* Add border */
+  border-radius: 8px; /* Add border radius */
+  background-color: white; /* Set background color to white */
+  position: relative; /* Relative positioning */
+}
+
+.faq-content {
+  padding: 20px;
+}
+
+.close-icon {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+}
+.faq-item summary {
+  font-size: 20px;
+  font-weight: bold;
+  cursor: pointer;
+  list-style: none; /* Remove default bullet point */
+  display: flex; /* Use flexbox to align hammer and question */
+  align-items: center; /* Align items vertically */
+  padding: 12px 20px; /* Add padding */
+}
+
+.faq-item summary::-webkit-details-marker {
+  display: none; /* Hide default arrow */
+}
+
+.thor-hammer {
+  width: 35px; /* Adjust size as needed */
+  height: 35px; /* Adjust size as needed */
+  margin-right: 8px; /* Adjust spacing as needed */
+}
+
+.faq-item p {
+  text-align: left; /* Left-align answers */
+  padding: 12px 20px; /* Add padding */
+}
+
+.hr {
+  margin-top: 20px; /* Adjust spacing between questions */
+}

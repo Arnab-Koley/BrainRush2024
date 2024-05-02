@@ -1,6 +1,7 @@
+import React, { useEffect } from "react";
 import Heading from "@components/Heading/Heading";
-import React from "react";
 import { Preahvihear } from "next/font/google";
+import "./style1.css";
 
 const preahvihear = Preahvihear({
   subsets: ["latin"],
@@ -8,76 +9,102 @@ const preahvihear = Preahvihear({
 });
 
 function Schedule() {
+  useEffect(() => {
+    // define variables
+    var items = document.querySelectorAll(".timeline li");
+
+    // check if an element is in viewport
+    function isElementInViewport(el) {
+      var rect = el.getBoundingClientRect();
+      return (
+        rect.top >= 0 &&
+        rect.left >= 0 &&
+        rect.bottom <=
+          (window.innerHeight || document.documentElement.clientHeight) &&
+        rect.right <=
+          (window.innerWidth || document.documentElement.clientWidth)
+      );
+    }
+
+    function callbackFunc() {
+      for (var i = 0; i < items.length; i++) {
+        if (isElementInViewport(items[i])) {
+          items[i].classList.add("in-view");
+        }
+      }
+    }
+
+    // listen for events
+    window.addEventListener("load", callbackFunc);
+    window.addEventListener("resize", callbackFunc);
+    window.addEventListener("scroll", callbackFunc);
+
+    // cleanup function
+    return () => {
+      window.removeEventListener("load", callbackFunc);
+      window.removeEventListener("resize", callbackFunc);
+      window.removeEventListener("scroll", callbackFunc);
+    };
+  }, []); // empty dependency array ensures that this effect runs only once after initial render
+
   return (
     <>
       <section id="schedule" className="mt-10 bg-red-600 text-blue-600">
         <Heading title="Our Schedule" />
         <div className="container max-w-5xl px-4 pt-3 pb-12 mx-auto">
-          <div className="grid gap-4 mx-4 sm:grid-cols-12">
-            <div className="col-span-12 sm:col-span-3">
-              <div className="text-center sm:text-left mb-14 mr-3 before:block before:w-24 before:h-3 before:mb-5 before:rounded-md before:mx-auto sm:before:mx-0 ">
-                <h3 className="text-4xl font-semibold text-headerText">
-                  <span className={preahvihear.className}>Kodikas-2K23</span>
-                </h3>
-                <span className="text-sm font-bold tracking-wider uppercase ">
-                  <span className={preahvihear.className}>
-                    Innovate your code game
-                  </span>
-                </span>
-                <img
-                  src="/assets/images/logo.png"
-                  className="mt-10 mr-8"
-                  id="logoTag"
-                  alt="Kodikas Logo"
-                />
-              </div>
-            </div>
-            <div className="relative col-span-12 px-4 space-y-6 sm:col-span-9">
-              <div className="col-span-12 space-y-12 relative px-4 sm:col-span-8 sm:space-y-8 sm:before:absolute sm:before:top-2 sm:before:bottom-0 sm:before:w-0.5 sm:before:-left-3 ">
-                <div className="flex flex-col sm:relative sm:before:absolute sm:before:top-2 sm:before:w-4 sm:before:h-4 sm:before:rounded-full sm:before:left-[-35px] sm:before:z-[1] ">
-                  <h3 className="text-3xl font-bold tracking-wide text-subHeaderText">
-                    <span className={preahvihear.className}>KodeTeaser</span>
-                  </h3>
-                  <time className="text-xs tracking-wide uppercase ">
-                    <span className={preahvihear.className}>Date TBD</span>
-                  </time>
-                  <p className="mt-3">
-                    <span className={preahvihear.className}>
-                      • Teams will compete in a thrilling coding knowledge journey through an online quiz.
-                      <br />• We've got treats to fuel the brains of our victorious teams!
-                    </span>
+          <section class="intro">
+            <div class="container"></div>
+          </section>
+          <section class="timeline">
+            <ul>
+              <li>
+                <div>
+                  <time>KodeTeaser</time>
+                  <p>Date TBD</p>
+                  <p>
+                    Teams will compete in a thrilling coding knowledge journey
+                    through an online quiz.
+                    <br />
+                    We've got treats to fuel the brains of our victorious teams!
                   </p>
                 </div>
-                <div className="flex flex-col sm:relative sm:before:absolute sm:before:top-2 sm:before:w-4 sm:before:h-4 sm:before:rounded-full sm:before:left-[-35px] sm:before:z-[1] ">
-                  <h3 className="text-3xl font-bold tracking-wide text-subHeaderText">
-                    <span className={preahvihear.className}>KoderRank</span>
-                  </h3>
-                  <time className="text-xs tracking-wide uppercase ">
-                    <span className={preahvihear.className}>Date TBD</span>
-                  </time>
-                  <p className="mt-3">
-                    <span className={preahvihear.className}>
-                      • Teams will tackle coding challenges using their favorite languages.
-                      <br />• If your team makes the cut, you're heading to the final round!
-                    </span>
+              </li>
+              <li>
+                <div>
+                  <time>KoderRank</time>
+                  <p>Date TBD</p>
+                  <p>
+                    Teams will tackle coding challenges using their favorite
+                    languages.
+                    <br />
+                    If your team makes the cut, you're heading to the final
+                    round!
                   </p>
                 </div>
-                <div className="flex flex-col sm:relative sm:before:absolute sm:before:top-2 sm:before:w-4 sm:before:h-4 sm:before:rounded-full sm:before:left-[-35px] sm:before:z-[1] ">
-                  <h3 className="text-3xl font-bold tracking-wide text-subHeaderText">
-                    <span className={preahvihear.className}>Kodikas Premier League (KPL)</span>
-                  </h3>
-                  <time className="text-xs tracking-wide uppercase ">
-                    <span className={preahvihear.className}>Date TBD</span>
-                  </time>
-                  <p className="mt-3">
-                    <span className={preahvihear.className}>
-                      • Teams will go head-to-head in 1 vs 1 battles, aiming to conquer Kodikas and claim their coding crowns!
-                    </span>
+              </li>
+              <li>
+                <div>
+                  <time>Kodikas Premier League (KPL)</time>
+                  <p>Date TBD</p>
+                  <p>
+                    Teams will go head-to-head in 1 vs 1 battles, aiming to
+                    conquer Kodikas and claim their coding crowns!
                   </p>
                 </div>
-              </div>
-            </div>
-          </div>
+              </li>
+            </ul>
+          </section>
+          <footer class="page-footer">
+            <span>made by </span>
+            <a href="https://georgemartsoukos.com/" target="_blank">
+              <img
+                width="24"
+                height="24"
+                src="https://assets.codepen.io/162656/george-martsoukos-small-logo.svg"
+                alt="George Martsoukos logo"
+              />
+            </a>
+          </footer>
         </div>
       </section>
     </>

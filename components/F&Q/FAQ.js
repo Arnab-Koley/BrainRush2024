@@ -1,8 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import Heading from "@components/Heading/Heading";
 import { Bangers } from "next/font/google";
 import "./faq.css";
-
 
 const preahvihear = Bangers({
   subsets: ["latin"],
@@ -49,6 +48,14 @@ const FAQ = () => {
     // Add more FAQ items here
   ];
 
+  // State to track open/close status of FAQ items
+  const [openIndex, setOpenIndex] = useState(null);
+
+  // Function to toggle open/close status of FAQ item
+  const toggleFAQ = (index) => {
+    setOpenIndex(openIndex === index ? null : index);
+  };
+
   return (
     <div className="faq-container">
       <Heading
@@ -62,24 +69,29 @@ const FAQ = () => {
       <div className="faq-list">
         {faqData.map((item, index) => (
           <div className="faq-item" key={index}>
-            <details>
-              <summary>
-                <img
-                  src="/assets/images/thorhammer.png"
-                  alt="Thor's Hammer"
-                  className="thor-hammer"
-                />
-                <span className={preahvihear.className}>{item.question}</span>
-              </summary>
-              <p>{item.answer}</p>
-            </details>
-            {index < faqData.length - 1 && <hr className="hr" />} {/* Horizontal rule */}
+            <summary onClick={() => toggleFAQ(index)}>
+              <img
+                src="/assets/images/thorhammer.png"
+                alt="Thor's Hammer"
+                className="thor-hammer"
+              />
+              <span className={preahvihear.className}>{item.question}</span>
+            </summary>
+            {openIndex === index && (
+              <div className="faq-content">
+                <p>{item.answer}</p>
+                <div
+                  className="close-icon"
+                  onClick={() => toggleFAQ(index)}
+                >
+                  &#10005;
+                </div>
+              </div>
+            )}
           </div>
         ))}
       </div>
-      <div className="footer">
-        Made with ❤️ by BrainRush Tech Team
-      </div>
+      <div className="footer">Made with ❤️ by BrainRush Tech Team</div>
     </div>
   );
 };

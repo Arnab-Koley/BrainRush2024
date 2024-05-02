@@ -7,8 +7,6 @@ import Team from "@components/Team/Team";
 import { Bangers } from "next/font/google";
 import Image from "next/image";
 
-
-
 const preahvihear = Bangers({
   subsets: ["latin"],
   weight: ["400"],
@@ -70,14 +68,15 @@ function About() {
             >
               <span className={preahvihear.className}>Our Team</span>
             </div>
-            {/* Add the image below the text */}
-            <img src="assets/images/spiderman.png" alt="Spiderman" />
           </div>
           <div className="about-content">
             {activeTab === "about" && <AboutMain />}
             {activeTab === "venue" && <Venue />}
             {activeTab === "team" && <Team />}
           </div>
+          {/* Add the image below the text */}
+       
+       
         </div>
       </section>
     </>

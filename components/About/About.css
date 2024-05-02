@@ -1,46 +1,74 @@
 /* About section styling */
 .about-section {
-    display: flex;
-  }
-  
-  .about-content {
-    width: 70%; /* Adjust the width as needed */
-    margin-left: 30px; /* Add margin to create space between the content and the red box */
-  }
-  
-  .about-buttons-container {
-    width: 23%; /* Adjust the width as needed */
-    background-color: #ed1d24; /* Marvel Red */
-    padding: 20px;
-    border-radius: 20px; /* Rounded corners */
-    position: sticky;
-    top: 0;
-    margin-bottom: 20px; /* Add margin to create space between the red box and the section */
-  }
-  
-  .about-button {
-    color: #fff; /* White text */
-    font-family: 'Bangers', cursive;
-    font-size: 20px;
-    margin-bottom: 10px;
-    cursor: pointer;
-    text-align: center; /* Center text */
-    padding: 10px; /* Add padding */
-  }
-  
-  .about-button.active {
-    font-weight: bold;
-  }
-  
-  .about-heading {
-    color: #fff;
-    font-size: 24px;
-    margin-bottom: 10px;
-    text-align: center;
-  }
-  .about-image {
-    width: 90%; /* Make the image span the full width of its container */
-    margin-top: 20px; /* Add some top margin to separate it from the buttons */
-    background-color: red !important;
-    background: none; /* Remove the background color */
-  }
+  display: flex;
+  justify-content: space-between; /* Distribute space between items */
+  align-items: flex-start; /* Align items to the start */
+}
+
+.about-content {
+  flex: 1; /* Take up remaining space */
+  padding: 40px; /* Increase padding */
+  background-color: #f9f9f9; /* Light gray background */
+  border-radius: 20px; /* Rounded corners */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  margin-right: 20px; /* Add margin to create space between content and buttons */
+  transition: transform 0.3s, box-shadow 0.3s; /* Smooth transition for transform and box-shadow */
+}
+
+.about-buttons-container {
+  width: 15%; 
+  height : 100%;/* Adjusted width */
+  padding: 20px;
+  background-color: #ed1d24; /* Marvel Red */
+  border-radius: 20px; /* Rounded corners */
+  margin-right : 5px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+.about-button {
+  color: #fff; /* White text */
+  font-family: 'Bangers', cursive;
+  font-size: 24px; /* Larger font size */
+  margin-bottom: 20px; /* Increase margin */
+  cursor: pointer;
+  text-align: center;
+  padding: 15px 30px; /* Increase padding */
+  transition: background-color 0.3s, transform 0.3s;
+  border: none;
+  outline: none;
+  background-color: transparent;
+}
+
+.about-button:hover {
+  background-color: #333; /* Dark background color on hover */
+  transform: scale(1.1);
+}
+
+.about-button.active {
+  font-weight: bold;
+}
+
+.about-heading {
+  color: #333; /* Dark text color */
+  font-size: 36px; /* Larger font size */
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.about-image {
+  width: 100%;
+  margin-top: 20px;
+  border-radius: 10px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s;
+}
+
+.about-image:hover {
+  transform: scale(1.05);
+}
+
+/* Hover effect for the content */
+.about-content:hover {
+  transform: translateY(-5px); /* Move content up on hover */
+  box-shadow: 0 12px 20px rgba(0, 0, 0, 0.2); /* Bigger shadow on hover */
+}
