@@ -1,8 +1,8 @@
 import Heading from "@components/Heading/Heading";
 import React from "react";
 import Image from "next/image";
-import sponsor1 from "public/assets/images/ardent_logo.png";
-import sponsor2 from "public/assets/images/unit.png";
+import sponsor1 from "../../public/assets/images/ardent_logo.png";
+import sponsor2 from "../../public/assets/images/unit.png";
 import { Bangers } from "next/font/google";
 import Link from "next/link";
 import "./sponsor.css"
