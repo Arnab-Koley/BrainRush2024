@@ -23,13 +23,14 @@
 body {
     color: #ff0000; /* Red font color */
     /* Set the background image */
-    background-image: url('/assets/images/spacebeg.jpg'); /* Adjust the path to match your directory structure */
+    background: rgb(2,0,36);
+    background: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(113, 17, 12, 0.9) 49%, rgba(0,0,0,1) 100%);
     background-repeat: repeat; /* Repeat the background image */
 }
 
 /* Add glow effect to headings */
 h1, h2, h3, h4, h5, h6 {
-    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #fff, 0 0 50px #ff0000, 0 0 60px #ff0000, 0 0 70px #ff0000; /* White glow */
+    text-shadow: 0 0 1px #fff, 0 0 1px #fff, 0 0 1px #fff, 0 0 20px #fff, 0 0 2px #ff0000, 0 0 2px #ff0000, 0 0 2px #ff0000; /* White glow */
 }
 
 /* Create flickering effect for buttons */
@@ -60,7 +61,7 @@ a:before {
     height: 3px;
     bottom: 0;
     left: 0;
-    background-color: #ff0000; /* Red glow */
+    background-color: #f4f4f4; /* Red glow */
     visibility: hidden;
     transform: scaleX(0);
     transition: all 0.3s ease-in-out 0s;

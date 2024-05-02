@@ -5,6 +5,9 @@ import AboutMain from "./AboutMain";
 import Venue from "@components/Venue/Venue";
 import Team from "@components/Team/Team";
 import { Bangers } from "next/font/google";
+import Image from "next/image";
+
+
 
 const preahvihear = Bangers({
   subsets: ["latin"],

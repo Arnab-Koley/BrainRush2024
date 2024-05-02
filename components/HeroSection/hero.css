@@ -1,60 +1,72 @@
 .avenger {
-  height: 300px;
-  width: 300px;
+  margin-top: -500px;
+  height: 480px;
+  width: 700px;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: red;
-  border-radius: 100%;
+  background: rgba(255, 0, 0, 0.6); /* Red with 60% opacity */
+  border-radius: 80px;
   transition: background 0.5s;
+  z-index: -1; /* Set z-index to -1 to place it behind other elements */
 }
 
 .avenger__icon {
-  height: 200px;
-  width: 200px;
+  margin-top: -30px;
+  height: 180px;
+  width: 180px;
   transition: clip-path 0.5s;
 }
 
 .avenger--fist {
-  background: #875094;
+  background: rgba(135, 80, 148, 0.4); /* #875094 with 60% opacity */
 }
 
 .avenger--fist .avenger__icon {
-  background: #a2cd48;
+  background: rgba(162, 205, 72, 1); /* #a2cd48 with 60% opacity */
   clip-path: polygon(
     85% 90%, 75% 55%, 89% 42%, 89% 24%, 82% 22%, 80% 9%, 70% 7%, 68% 10%, 66% 6%, 56% 5%, 53% 8%, 51% 4%, 38% 5%, 36% 9%, 34% 7%, 25% 8%, 23% 12%, 17% 17%, 16% 41%, 26% 54%, 20% 90%
   );
 }
 
 .avenger--hammer {
-  background: rgb(160, 15, 32);
+  background: rgba(160, 15, 32, 0.4); /* Red with 60% opacity */
 }
 
 .avenger--hammer .avenger__icon {
-  background: rgb(220, 234, 234);
+  background: rgba(220, 234, 234, 1); /* #dcfaea with 60% opacity */
   clip-path: polygon(
     45% 95%, 55% 95%, 55% 40%, 60% 40%, 62.5% 42.5%, 85% 42.5%, 85% 7.5%, 62.5% 7.5%, 60% 5%, 40% 5%, 37.5% 7.5%, 15% 7.5%, 15% 42.5%, 37.5% 42.5%, 40% 40%, 45% 40%, 45% 95%, 45% 95%, 45% 95%, 45% 95%, 45% 95%
   );
 }
 
 .avenger--shield {
-  background: rgb(30, 82, 133);
+  background: rgba(30, 82, 133, 0.4); /* Blue with 60% opacity */
 }
 
 .avenger--shield .avenger__icon {
-  background: white;
+  background: rgba(255, 255, 255, 1); /* White with 60% opacity */
   clip-path: polygon(
     79% 96%, 79% 96%, 68% 62%, 68% 62%, 98% 40%, 98% 40%, 61% 40%, 61% 40%, 50% 5%, 50% 5%, 39% 40%, 39% 40%, 2% 40%, 2% 40%, 32% 62%, 32% 62%, 21% 96%, 21% 96%, 50% 75%, 50% 75%, 50% 75%
   );
 }
 
 .avenger--helmet {
-  background: #aa0505;
+  background: rgba(170, 5, 5, 0.4); /* Red with 60% opacity */
 }
 
 .avenger--helmet .avenger__icon {
-  background: #fbca03;
+  background: rgba(251, 202, 3, 1); /* #fbca03 with 60% opacity */
   clip-path: polygon(
     60% 95%, 70% 75%, 72.5% 65%, 80% 60%, 80% 35%, 75% 32.5%, 74% 25%, 70% 15%, 65% 10%, 50% 5%, 35% 10%, 30% 15%, 26% 25%, 25% 32.5%, 20% 35%, 20% 60%, 27.5% 65%, 30% 75%, 40% 95%, 40% 95%, 40% 95%
   );
+}
+
+.hero-container {
+  margin-top: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
 }

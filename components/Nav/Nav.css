@@ -1,11 +1,12 @@
 /* Navbar styling */
 .navbar {
-  background-color: #000; /* Marvel Black */
   padding: 1rem;
+  background-size: cover; /* Ensure the background image covers the entire navbar */
+  background-repeat: no-repeat; /* Prevent the background image from repeating */
 }
 
 .navbar a {
-  color: #ffd700; /* Marvel Gold */
+  color: #000000; /* Marvel Gold */
   padding: 0.5rem 1rem;
   transition: color 0.3s ease-in-out;
   font-family: 'Bangers', sans-serif; /* Apply Marvel font */
@@ -17,7 +18,7 @@
 
 /* My Team */
 .navLinks {
-  color: #ffd700; /* Marvel Gold */
+  color: #ee0000; /* Marvel Gold */
   text-decoration: none;
   display: inline-block;
   padding: 0px 10px;
@@ -26,7 +27,7 @@
 }
 
 .navLinks:hover {
-  color: #ff0000; /* Marvel Red */
+  color: #000000; /* Marvel Red */
   text-decoration: none;
 }
 
@@ -37,7 +38,7 @@
   left: 50%;
   width: 0;
   height: 2px;
-  background: #ffd700; /* Marvel Gold */
+  background: #ee0000; /* Marvel Gold */
   transition: width 0.5s ease, left 0.5s ease;
 }
 
