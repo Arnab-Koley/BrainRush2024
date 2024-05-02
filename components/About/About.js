@@ -1,11 +1,8 @@
 import React, { useState } from "react";
-import Heading from "./../Heading/Heading";
 import "./About.css";
 import AboutMain from "./AboutMain";
 import Venue from "@components/Venue/Venue";
-import Team from "@components/Team/Team";
 import { Bangers } from "next/font/google";
-import Image from "next/image";
 
 const preahvihear = Bangers({
   subsets: ["latin"],
@@ -15,7 +12,6 @@ const preahvihear = Bangers({
 const tabHeadings = {
   about: "About Us",
   venue: "Our Venue",
-  team: "Our Team",
 };
 
 function About() {
@@ -27,56 +23,35 @@ function About() {
 
   return (
     <>
-      <section className="overflow-hidden px-5 sm:px-20" id="about">
-        <Heading
-          title={tabHeadings[activeTab]}
-          header={"Know more About"}
-          hearerspan="BrainRush 2k24"
-          subheader="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
-          subheaderspan1="In convallis tortor eros. Donec vitae tortor lacus."
-          subheaderspan2="Phasellus aliquam ante in maximus."
-        />
-        <div className="about-section">
-          <div className="about-buttons-container">
-            <div
-              onClick={() => handleTabChange("about")}
-              className={
-                activeTab === "about"
-                  ? "about-button active"
-                  : "about-button inactive"
-              }
-            >
-              <span className={preahvihear.className}>About Us</span>
-            </div>
-            <div
-              onClick={() => handleTabChange("venue")}
-              className={
-                activeTab === "venue"
-                  ? "about-button active"
-                  : "about-button inactive"
-              }
-            >
-              <span className={preahvihear.className}>Our Venue</span>
-            </div>
-            <div
-              onClick={() => handleTabChange("team")}
-              className={
-                activeTab === "team"
-                  ? "about-button active"
-                  : "about-button inactive"
-              }
-            >
-              <span className={preahvihear.className}>Our Team</span>
-            </div>
+      <section className="about-section" id="about">
+        <h2 className="about-heading">
+          <span className={preahvihear.className}>Know More About Us</span>
+        </h2>
+        <div className="about-buttons-container">
+          <div
+            onClick={() => handleTabChange("about")}
+            className={
+              activeTab === "about"
+                ? "about-button active"
+                : "about-button inactive"
+            }
+          >
+            <span className={preahvihear.className}>About Us</span>
           </div>
-          <div className="about-content">
-            {activeTab === "about" && <AboutMain />}
-            {activeTab === "venue" && <Venue />}
-            {activeTab === "team" && <Team />}
+          <div
+            onClick={() => handleTabChange("venue")}
+            className={
+              activeTab === "venue"
+                ? "about-button active"
+                : "about-button inactive"
+            }
+          >
+            <span className={preahvihear.className}>Our Venue</span>
           </div>
-          {/* Add the image below the text */}
-       
-       
+        </div>
+        <div className="about-content">
+          {activeTab === "about" && <AboutMain />}
+          {activeTab === "venue" && <Venue />}
         </div>
       </section>
     </>
