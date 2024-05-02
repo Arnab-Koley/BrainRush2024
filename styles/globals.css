@@ -81,3 +81,21 @@ a:hover:before {
 .example {
     animation: floatAnimation 3s ease-in-out infinite;
 }
+::-webkit-scrollbar {
+    width: 6px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: #f41e1e;
+  }
+  
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #ffffff;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #000000;
+  }
+  

@@ -26,7 +26,7 @@ function Venue() {
   };
   return (
     <>
-      <div id="venue">
+      <div id="venue" style={{ padding: "2px" }}>
         {/* <Heading title="Our " subtitle="Venue" /> */}
 
         <div className="">

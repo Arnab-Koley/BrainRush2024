@@ -1,6 +1,9 @@
 /* Venue section styling */
-#venue {
-  background-color: #00205b; /* Marvel Blue */
+
+/* Padding adjustments for the white box */
+.aboutHeader {
+  padding: 20px !important; 
+  /* Adjust padding */
 }
 
 /* Heading */
@@ -13,22 +16,21 @@
 
 /* Text */
 .aboutHeader p {
-  color: #ffd700; /* Marvel Gold */
+  color: #12120d; /* Marvel Gold */
 }
 
 /* Google Map */
 .m {
-  height: 20rem;
-  margin-bottom: 7.5rem;
+
   border-radius: 20px;
   width: 80vw;
   max-width: 100%;
 }
 
 /* Icon and address */
-.aboutHeader .flex.items-center.mb-10 img {
+.aboutHeader .flex.items-center.mb-8 img {
   filter: invert(100%); /* Invert color for icon */
-}
+}8
 .aboutHeader .flex.items-center.mb-10 p {
   color: #fff; /* White text */
 }
