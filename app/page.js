@@ -38,8 +38,9 @@ export default function Home() {
       {/* <> */}
       <Hero />
       <About />
-      <Team />
+     
       <Schedule />
+      <Team />
       {/* <Details /> */}
       {/* <Proccess /> */}
       <Sponsor />

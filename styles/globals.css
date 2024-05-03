@@ -28,10 +28,10 @@ body {
     background-repeat: repeat; /* Repeat the background image */
 }
 
-/* Add glow effect to headings */
-h1, h2, h3, h4, h5, h6 {
-    text-shadow: 0 0 1px #fff, 0 0 1px #fff, 0 0 1px #fff, 0 0 20px #fff, 0 0 2px #ff0000, 0 0 2px #ff0000, 0 0 2px #ff0000; /* White glow */
-}
+/* h1, h2, h3, h4, h5, h6 {
+    text-shadow: 0 0 1px #fff, 0 0 1px #fff, 0 0 1px #fff, 0 0 20px #fff, 0 0 2px #ff0000, 0 0 2px #ff0000, 0 0 2px #ff0000; /
+} 
+*/
 
 /* Create flickering effect for buttons */
 

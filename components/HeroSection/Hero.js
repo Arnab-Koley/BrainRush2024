@@ -1,9 +1,9 @@
 import React, { useEffect } from "react";
-import { Bangers } from "next/font/google";
+import {Rubik_Dirt } from "next/font/google";
 import Countdown from "./../Countdown/Countdown";
 import './hero.css';
 
-const preahvihear = Bangers({
+const preahvihear = Rubik_Dirt({
   subsets: ["latin"],
   weight: ["400"],
 });
@@ -29,12 +29,12 @@ const Hero = () => {
     <section className="overflow-hidden py-10">
       <div className="hero-container">
         <div className="text-center">
-          <h1 className="text-headerText text-45xl sm:text-8xl font-bold mb-20 responsive-padding">
+          <h1 className="text-headerText text-45xl sm:text-7xl font-bold mb-20 responsive-padding">
             <span className={preahvihear.className} style={{ color: "white" }}>BrainRush-2K24</span>
           </h1>
           <h1 className="text-white-500 text-3xl sm:text-l font-bold mb-20 responsive-padding">
-            <span className={preahvihear.className} style={{ color: "white" }}>.</span>
-          </h1>
+<br/>
+</h1>
           <Countdown style={{ marginTop: '10px' }} />
         </div>
         <div className="flex items-center justify-center">

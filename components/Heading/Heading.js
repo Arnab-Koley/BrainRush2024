@@ -1,8 +1,8 @@
 import React from "react";
 import "./Heading.css";
-import { Bangers, Metal_Mania } from "next/font/google";
+import {Rubik_Dirt, Rubik_Scribble } from "next/font/google";
 
-const preahvihear = Bangers({
+const preahvihear = Rubik_Dirt({
   subsets: ["latin"],
   weight: ["400"],
 });

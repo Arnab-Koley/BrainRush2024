@@ -1,3 +1,12 @@
+@import url('https://fonts.gstatic.com');
+@import url('https://fonts.googleapis.com');
+@import url('https://fonts.googleapis.com/css2?family=Rubik+Dirt&display=swap');
+.rubik-dirt-regular {
+  font-family: "Rubik Dirt", system-ui;
+  font-weight: 400;
+  font-style: normal;
+}
+
 .avenger {
   margin-top: -500px;
   height: 480px;
@@ -5,11 +14,18 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(255, 0, 0, 0.6); /* Red with 60% opacity */
+  background: rgba(255, 0, 0, 0.0); /* Red with 60% opacity */
   border-radius: 80px;
-  transition: background 0.5s;
+  transition: background 0.5s, transform 0.3s, box-shadow 0.3s; /* Add transition for transform and box-shadow */
   z-index: -1; /* Set z-index to -1 to place it behind other elements */
+  box-shadow: 0px 20px 40px rgba(0, 0, 0, 0.5); /* Update box-shadow values */
 }
+
+.avenger:hover {
+  transform: scale(1.1); /* Scale up on hover */
+  box-shadow: 0px 40px 80px rgba(0, 0, 0, 0.7); /* Update box-shadow values for hover */
+}
+
 
 .avenger__icon {
   margin-top: -30px;
@@ -19,7 +35,7 @@
 }
 
 .avenger--fist {
-  background: rgba(135, 80, 148, 0.4); /* #875094 with 60% opacity */
+  background: rgba(135, 80, 148, 0.0); /* #875094 with 60% opacity */
 }
 
 .avenger--fist .avenger__icon {
@@ -30,7 +46,7 @@
 }
 
 .avenger--hammer {
-  background: rgba(160, 15, 32, 0.4); /* Red with 60% opacity */
+  background: rgba(160, 15, 32, 0.0); /* Red with 60% opacity */
 }
 
 .avenger--hammer .avenger__icon {
@@ -41,7 +57,7 @@
 }
 
 .avenger--shield {
-  background: rgba(30, 82, 133, 0.4); /* Blue with 60% opacity */
+  background: rgba(30, 82, 133, 0.0); /* Blue with 60% opacity */
 }
 
 .avenger--shield .avenger__icon {
@@ -52,7 +68,7 @@
 }
 
 .avenger--helmet {
-  background: rgba(170, 5, 5, 0.4); /* Red with 60% opacity */
+  background: rgba(170, 5, 5, 0.0); /* Red with 60% opacity */
 }
 
 .avenger--helmet .avenger__icon {
@@ -69,4 +85,5 @@
   align-items: center;
   justify-content: center;
   height: 100%;
+  margin-bottom: 120px;
 }
