@@ -1,34 +1,33 @@
-
-.allteam{
+.allteam {
   margin-top: 10px;
 }
 
-.head{
+.head {
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 30px;
-  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
   color: white;
 }
 
-.searchcontainer{
+.searchcontainer {
   margin: 10px 40px 0 40px;
   display: flex;
 }
 
-.searchbar{
+.searchbar {
   display: flex;
 }
 
-.btns{
+.btns {
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-direction: row;;
+  flex-direction: row;
 }
 
-.dlbtn{
+.dlbtn {
   border-radius: 0 10px 10px 0;
   border-left: 2px solid black;
 }
@@ -41,22 +40,21 @@
   outline: none;
 }
 
-.searchitem{
+.searchitem {
   padding: 10px;
 }
 
-.searchbar button{
+.searchbar button {
   background-color: red;
-  
 }
 
-.tablecontainer{
+.tablecontainer {
   margin: 20px 40px;
   display: flex;
   flex-direction: column;
 }
 
-.tablehead{
+.tablehead {
   background-color: red;
   width: 100%;
   display: flex;
@@ -67,53 +65,46 @@
   padding: 15px 0;
   border-radius: 10px;
   color: white;
-  box-shadow: rgba(45, 35, 66, .4) 0 2px 4px,rgba(45, 35, 66, .3) 0 7px 13px -3px,rgba(58, 65, 111, .5) 0 -3px 0 inset;
+  box-shadow: rgba(45, 35, 66, 0.4) 0 2px 4px,
+    rgba(45, 35, 66, 0.3) 0 7px 13px -3px, rgba(58, 65, 111, 0.5) 0 -3px 0 inset;
   box-sizing: border-box;
 }
 
-
-.table{
+.table {
   width: 100%;
   border-collapse: collapse;
 }
 
-
-.hitem{
+.hitem {
   display: flex;
   flex: 1;
   padding-left: 10px;
 }
 
-.bitem{
+.bitem {
   display: flex;
   flex-direction: column;
   flex: 1;
   padding-left: 15px;
 }
 
-.info{
-
-}
-
-.phn{
+.phn {
   display: none;
 }
 
-
-
-.tablebody{
+.tablebody {
+  margin-top: 10px;
   color: rgb(182, 182, 182);
   width: 100%;
   display: flex;
   flex-direction: column;
-  height: 365px; 
+  height: 365px;
   overflow-y: auto;
   border-radius: 10px;
   background-color: rgba(0, 0, 0, 0.5);
   border: 2px solid rgb(96, 96, 96);
 }
 
-/* Customize scrollbar */
 .tablebody::-webkit-scrollbar {
   width: 12px;
 }
@@ -132,9 +123,7 @@
   background: #555;
 }
 
-
-.team{
-  /* background-color: white; */
+.team {
   display: flex;
   width: 100%;
   padding: 5px 0;
@@ -142,12 +131,12 @@
   align-items: center;
 }
 
-.leader{
+.leader {
   display: flex;
   flex-direction: column;
 }
 
-.bottomtextholder{
+.bottomtextholder {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -155,7 +144,7 @@
   color: white;
 }
 
-.prenextbtn{
+.prenextbtn {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -165,37 +154,32 @@
   border-radius: 10px;
 }
 
-.numbtn{ 
+.numbtn {
   color: red;
   margin: 0 10px;
-
 }
 
-.bottomtext{
+.bottomtext {
   padding: 0 10px;
 }
 
-.phnbtn{
+.phnbtn {
   display: none;
 }
 
-
-
-
 @media only screen and (max-width: 768px) {
-
-  .allteam{
+  .allteam {
     display: flex;
     flex-direction: column;
   }
 
-
-  .tablebody{
+  .tablebody {
     height: 450px;
     padding: 10px;
+    margin-top: 0;
   }
 
-  .tablehead{
+  .tablehead {
     display: none;
   }
   .team {
@@ -205,7 +189,7 @@
     border: none;
   }
 
-  .teamname{
+  .teamname {
     background-color: red;
     border-radius: 10px;
     text-align: center;
@@ -213,33 +197,33 @@
     font-weight: bold;
   }
 
-  .bitem{
+  .bitem {
     padding: 5px;
     width: 100%;
   }
 
-  .hitem{
+  .hitem {
     padding: 0;
   }
 
-  .phn{
+  .phn {
     display: flex;
     color: red;
   }
 
-  .bottomtextholder{
+  .bottomtextholder {
     flex-direction: column;
   }
 
-  .prenextbtn{
+  .prenextbtn {
     display: none;
   }
 
-  .phnbtn{
+  .phnbtn {
     display: flex;
   }
 
-  .phnprenextbtn{
+  .phnprenextbtn {
     display: flex;
     align-items: center;
     justify-content: center;

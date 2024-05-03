@@ -6,7 +6,7 @@ import { Bangers, Preahvihear } from "next/font/google";
 import axios from "axios";
 import Loader from "@components/Loader/Loader";
 import searchicon from "../../public/assets/images/search.png";
-import deleteicon from "../../public/assets/images/delete.png"
+import deleteicon from "../../public/assets/images/delete.png";
 import Image from "next/image";
 
 const preahvihear = Bangers({
@@ -23,33 +23,8 @@ const AllTeams = () => {
   const [notSelected, setNotSelected] = useState(null);
   const [loading, setLoading] = useState(true);
 
-  // const getTeams = async () => {
-  //   try {
-  //     const { data } = await axios.get(
-  //       `${process.env.NEXT_PUBLIC_BASE_URL}/api/team/all?search=${search}&page=${pageNum}&selected=${notSelected}`
-  //     );
-
-  //     setTeams(data.teams);
-  //     setLimit(data.limit);
-  //     setCount(data.count);
-  //   } catch (error) {
-  //     console.log(error);
-  //   } finally {
-  //     setLoading(false);
-  //   }
-  // };
-
-  // useEffect(() => {
-  //   setLoading(true);
-  //   getTeams();
-  // }, [pageNum, notSelected,search]);
-
-  // const handleDelete = () => {
-  //   setSearch(""); // Clear search input
-  //   getTeams(); // Fetch all teams
-  // };
-
   const [searchCleared, setSearchCleared] = useState(false);
+
 
   const fetchTeams = async () => {
     try {
@@ -79,18 +54,16 @@ const AllTeams = () => {
 
   const handleClearSearch = () => {
     setLoading(true);
-    setSearch(""); // Clear search input
+    setSearch("");
     setPageNum(1);
-    setSearchCleared(true); // Set search cleared to true
+    setSearchCleared(true);
   };
 
   useEffect(() => {
     if (searchCleared) {
-      // If search is cleared, fetch all teams
       fetchTeams();
-      setSearchCleared(false); // Reset searchCleared after fetching teams
+      setSearchCleared(false);
     } else {
-      // Otherwise, fetch teams based on current search
       fetchTeams();
     }
   }, [pageNum, notSelected, searchCleared]);
@@ -105,7 +78,7 @@ const AllTeams = () => {
           <div className="searchcontainer">
             <div className="searchbar">
               <input
-              className="searchitem"
+                className="searchitem"
                 type="text"
                 name="email"
                 id="teams-search"
@@ -116,24 +89,21 @@ const AllTeams = () => {
                 }}
               />
               <div className="btns">
-              <button type="submit" onClick={handleSearch} className="searchitem sbtn">
-                <Image
-                  src={searchicon}
-                  alt=""
-                  height={30}
-                  width={30}
-                />
-              </button>
-              <button type="button" onClick={handleClearSearch} className="searchitem dlbtn">
-              <Image
-                  src={deleteicon}
-                  alt=""
-                  height={30}
-                  width={30}
-                />
-              </button>
+                <button
+                  type="submit"
+                  onClick={handleSearch}
+                  className="searchitem sbtn"
+                >
+                  <Image src={searchicon} alt="" height={30} width={30} />
+                </button>
+                <button
+                  type="button"
+                  onClick={handleClearSearch}
+                  className="searchitem dlbtn"
+                >
+                  <Image src={deleteicon} alt="" height={30} width={30} />
+                </button>
               </div>
-              
             </div>
           </div>
 
@@ -156,7 +126,7 @@ const AllTeams = () => {
                         <div className="info">{team.leader.email}</div>
                       </td>
                       <td className="bitem">
-                      <div className="phn">Team Member</div>
+                        <div className="phn">Team Member</div>
                         <div className="info">
                           {team?.teamMember?.name
                             ? team.teamMember.name
@@ -175,102 +145,100 @@ const AllTeams = () => {
           </table>
 
           <div className="bottomtextholder">
-
             <button
-               className="prenextbtn"
-                onClick={() => {
-                  setPageNum((prev) => {
-                    return Math.max(prev - 1, 1);
-                  });
-                }}
+              className="prenextbtn"
+              onClick={() => {
+                setPageNum((prev) => {
+                  return Math.max(prev - 1, 1);
+                });
+              }}
+            >
+              <svg
+                className="w-3.5 h-3.5 mr-2"
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 14 10"
               >
-                  <svg
-                    className="w-3.5 h-3.5 mr-2"
-                    aria-hidden="true"
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 14 10"
-                  >
-                    <path
-                      stroke="currentColor"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                      d="M13 5H1m0 0 4 4M1 5l4-4"
-                    />
-                  </svg>
-                  <span>Prev</span>
-              </button>
+                <path
+                  stroke="currentColor"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M13 5H1m0 0 4 4M1 5l4-4"
+                />
+              </svg>
+              <span>Prev</span>
+            </button>
 
             <div className="bottomtext">
-              Showing <span className="numbtn">{Math.min(count, (pageNum - 1) * limit + 1)}</span>{" "}
-              to <span className="numbtn">{Math.min(count, pageNum * limit)}</span> of{" "}
-              <span className="numbtn">{count}</span> Teams
+              Showing{" "}
+              <span className="numbtn">
+                {Math.min(count, (pageNum - 1) * limit + 1)}
+              </span>{" "}
+              to{" "}
+              <span className="numbtn">{Math.min(count, pageNum * limit)}</span>{" "}
+              of <span className="numbtn">{count}</span> Teams
             </div>
 
-      
-              <button
+            <button
               className="prenextbtn"
-                onClick={() => {
-                  setPageNum((next) => {
-                    return Math.min(
-                      next + 1,
-                      Math.floor((count - 1) / limit) + 1
-                    );
-                  });
-                }}
+              onClick={() => {
+                setPageNum((next) => {
+                  return Math.min(
+                    next + 1,
+                    Math.floor((count - 1) / limit) + 1
+                  );
+                });
+              }}
+            >
+              <span>Next</span>
+              <svg
+                className="w-3.5 h-3.5 ml-2"
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 14 10"
               >
-                  <span>Next</span>
-                  <svg
-                    className="w-3.5 h-3.5 ml-2"
-                    aria-hidden="true"
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 14 10"
-                  >
-                    <path
-                      stroke="currentColor"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                      d="M1 5h12m0 0L9 1m4 4L9 9"
-                    />
-                  </svg>
-              </button>
+                <path
+                  stroke="currentColor"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M1 5h12m0 0L9 1m4 4L9 9"
+                />
+              </svg>
+            </button>
 
-
-
-
-
-              <div className="phnbtn">
+            <div className="phnbtn">
               <button
-               className="phnprenextbtn"
+                className="phnprenextbtn"
                 onClick={() => {
                   setPageNum((prev) => {
                     return Math.max(prev - 1, 1);
                   });
                 }}
               >
-                  <svg
-                    className="w-3.5 h-3.5 mr-2"
-                    aria-hidden="true"
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 14 10"
-                  >
-                    <path
-                      stroke="currentColor"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                      d="M13 5H1m0 0 4 4M1 5l4-4"
-                    />
-                  </svg>
-                  <span>Prev</span>
+                <svg
+                  className="w-3.5 h-3.5 mr-2"
+                  aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 14 10"
+                >
+                  <path
+                    stroke="currentColor"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M13 5H1m0 0 4 4M1 5l4-4"
+                  />
+                </svg>
+                <span>Prev</span>
               </button>
-      
+
               <button
-              className="phnprenextbtn"
+                className="phnprenextbtn"
                 onClick={() => {
                   setPageNum((next) => {
                     return Math.min(
@@ -280,28 +248,25 @@ const AllTeams = () => {
                   });
                 }}
               >
-                  <span>Next</span>
-                  <svg
-                    className="w-3.5 h-3.5 ml-2"
-                    aria-hidden="true"
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 14 10"
-                  >
-                    <path
-                      stroke="currentColor"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                      d="M1 5h12m0 0L9 1m4 4L9 9"
-                    />
-                  </svg>
+                <span>Next</span>
+                <svg
+                  className="w-3.5 h-3.5 ml-2"
+                  aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 14 10"
+                >
+                  <path
+                    stroke="currentColor"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M1 5h12m0 0L9 1m4 4L9 9"
+                  />
+                </svg>
               </button>
-
-              </div>
-
+            </div>
           </div>
-
         </section>
       )}
     </section>
