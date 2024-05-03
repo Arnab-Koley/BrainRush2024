@@ -11,14 +11,16 @@
 #schedule {
   background: none; /* Remove background */
   padding-top: 0; /* Adjust padding */
-  margin-top: 0; /* Adjust margin */
+  margin-top: 0;
+  margin-bottom: 120px; /* Adjust margin */
 }
 
 .container {
   width: 100%; /* Adjust width */
   max-width: none; /* Remove max-width */
   margin: 0 auto;
-  text-align: left; /* Adjust text alignment */
+  text-align: left; 
+  margin-bottom: 0px;/* Adjust text alignment */
 }
 
 /* Timeline */

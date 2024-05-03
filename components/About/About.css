@@ -1,57 +1,59 @@
 /* About section styling */
 .about-section {
+  background-image: url('../../public/assets/images/vintagebg.jpg');
+  background-size: cover;
+  background-position: center;
+  padding: 20px;
+  border-radius: 20px;
+  opacity: calc(0.9);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+  width: 80%;
+  margin: auto;
   display: flex;
   flex-direction: column;
-  margin: auto;
   align-items: center;
-  padding: 40px;
-  background-color: #f9f9f9; /* Light gray background */
-  border-radius: 20px; /* Rounded corners */
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-  width: 80%; /* Add margin to create space between content and buttons */
-  transition: transform 0.3s, box-shadow 0.3s; /* Smooth transition for transform and box-shadow */
+  margin-bottom: 120px;
+  /* Add background color with opacity */
+  
 }
-
 .about-heading {
-  color: #333; /* Dark text color */
   font-size: 36px; /* Larger font size */
   margin-bottom: 20px;
   text-align: center;
 }
 
 .about-content {
+  color: #fff; /* Set text color for content */
   width: 80%;
   margin-top: 20px;
 }
 
 .about-buttons-container {
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   width: 100%;
   margin-top: 20px;
+  transition: transform 0.3s;
 }
 
 .about-button {
-  color: #000000; /* White text */
+  color: red;
   font-family: 'Bangers', cursive;
-  font-size: 24px; /* Larger font size */
+  font-size: 24px;
   cursor: pointer;
   text-align: center;
-  padding: 15px 30px; /* Increase padding */
-  transition: background-color 0.3s, transform 0.3s;
+  padding: 20px 33px;
   border: none;
   outline: none;
   background-color: transparent;
-}
-
-.about-button:hover {
-  background-color: #ff0000; /* Dark background color on hover */
-  color: white;
-  transform: scale(1.1);
+  transition: background-color 0.3s, transform 0.3s;
+  border-radius: 50px;
 }
 
 .about-button.active {
   font-weight: bold;
-  background-color: #ff0000;
+  background-color: black;
+  transition: 0.5s;
   color: white;
 }

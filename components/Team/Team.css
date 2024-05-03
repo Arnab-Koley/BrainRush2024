@@ -17,20 +17,21 @@
 .year-button-container {
   display: flex;
   gap: 20px;
-  background-color: white; /* White background color */
+  background-color: rgb(131, 3, 3); /* White background color */
   padding-left: 0px;
   padding-right: 0px;
   padding-top: 10px;
   padding-bottom: 10px;
   justify-content: center;
   width:49%;
+
   margin: auto;
   border-radius: 60px;/* Add border radius */
 }
 
 /* Year button styles */
 .year-button {
-  color: red; /* Red text color */
+  color: black; /* Red text color */
   font-family: 'Bangers', cursive;
   font-size: 24px; /* Larger font size */
   cursor: pointer;
@@ -54,11 +55,14 @@
 
 /* Team section styles */
 .team-section {
-  background-color: #a80101;
+  background-image: url('../../public/assets/images/bgof.webp');
+  background-size: cover;
+  height:100%;
   padding: 30px;
   width: 80%;
   border-radius: 20px;
-  margin-top: 50px; /* Add space above the team section */
+  margin-top: 50px; 
+  margin-bottom: 120px;/* Add space above the team section */
 }
 
 
@@ -125,7 +129,7 @@
 
 /* Red text color for team member names */
 .red-text {
-  color: red;
+  color: rgb(255, 255, 255);
 }
 
 /* Team member description styles */
