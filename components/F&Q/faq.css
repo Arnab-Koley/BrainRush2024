@@ -31,7 +31,13 @@
   list-style: none; /* Remove default bullet point */
   display: flex; /* Use flexbox to align hammer and question */
   align-items: center; /* Align items vertically */
-  padding: 12px 20px; /* Add padding */
+  padding: 12px 20px 8px 0; /* Adjust padding */
+}
+
+.faq-item p {
+  font-size: 18px; /* Reduce font size */
+  text-align: left; /* Left-align answers */
+  padding: 8px 20px; /* Adjust padding */
 }
 
 .faq-item summary::-webkit-details-marker {

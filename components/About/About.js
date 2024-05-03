@@ -9,11 +9,6 @@ const preahvihear = Bangers({
   weight: ["400"],
 });
 
-const tabHeadings = {
-  about: "About Us",
-  venue: "Our Venue",
-};
-
 function About() {
   const [activeTab, setActiveTab] = useState("about");
 
