@@ -1,6 +1,54 @@
+// import React from "react";
+// import { Preahvihear } from "next/font/google";
+// import Link from "next/link";
+// import "./result.css";
+// import bg from "../../../public/assets/images/endgame.gif";
+// import trophy from "../../../public/assets/images/trophy.png";
+// import Image from "next/image";
+
+// const preahvihear = Preahvihear({
+//   subsets: ["latin"],
+//   weight: ["400"],
+// });
+
+// const Results = () => {
+//   return (
+//     <div className="result">
+//       <div className="dark-overlay"></div>
+//       <Image src={bg} alt="" className="full-screen-image" />
+//       <div className="main">
+//       <div className="left">
+//           <div className="card">
+//             <div className="name">Winners</div>
+//             <div className="desc">Top 3 teams of Kodikas Premier League!</div>
+//             <div className="resultbtn">See results</div>
+//           </div>
+//           <div className="card">
+//             <div className="name">Winners</div>
+//             <div className="desc">Top 3 teams of Kodikas Premier League!</div>
+//             <div className="resultbtn">See results</div>
+//           </div>
+//           <div className="card">
+//             <div className="name">Winners</div>
+//             <div className="desc">Top 3 teams of Kodikas Premier League!</div>
+//             <div className="resultbtn">See results</div>
+//           </div>
+//       </div>
+//       <div className="right">
+//       <Image src={trophy} alt="" height={500} width={500} />
+//       </div>
+
+//       </div>
+
+//     </div>
+//   );
+// };
+
+// export default Results;
+
+
 import React from 'react'
 import { Preahvihear } from "next/font/google";
-// import "./page.css";
 import Link from "next/link";
 
 const preahvihear = Preahvihear({
@@ -88,7 +136,6 @@ const Results = () => {
                             <div className="flex-grow">
                                 <h2
                                     className="text-headerText text-4xl title-font font-2xl mb-3"
-                                // style={{ color: "#6f7bd9 !important" }}
                                 >
                                     <span className={preahvihear.className}>
                                         KodeTeaser
@@ -96,7 +143,6 @@ const Results = () => {
                                 </h2>
 
                                 <p className="leading-relaxed text-base mb-5">
-                                    {/* Team Leader: {request.teamLeader.name} */}
                                     <span className={preahvihear.className}>
                                         Top 30 teams of KodeTeaser!
                                     </span>
@@ -113,13 +159,6 @@ const Results = () => {
                                         </span>
                                     </button>
                                 </Link>
-                                {/* <a className="mt-3 text-indigo-500 inline-flex me-2 items-center">
-                    <Buttons title={"Cancel Request"} />
-                  </a> */}
-
-                                {/* <a className="mt-3 text-indigo-500 inline-flex ms-2 items-center">
-                    <Buttons title={"Confirm Request"} />
-                  </a> */}
                             </div>
                         </div>
                     </div>

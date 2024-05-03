@@ -1,4 +1,5 @@
 /** @type {import('next').NextConfig} */
+const withVideos = require('next-videos')
 const nextConfig = {
   experimental: {
     appDir: true,
@@ -23,4 +24,8 @@ const nextConfig = {
   },
 };
 
-module.exports = nextConfig;
+module.exports = withVideos(nextConfig);
+
+
+
+// module.exports = withVideos()
