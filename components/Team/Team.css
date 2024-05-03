@@ -1,95 +1,161 @@
 /* Team section styles */
-.team-section {
-    background-color: #a80101;
-    padding: 30px;
-    width: 80%;
-    border-radius: 20px;
-    margin-top: 50px; /* Add space above the team section */
-  }
-  
-  /* Heading styles */
-  .heading {
-    color: #fff;
-    font-size: 36px;
-    margin-bottom: 20px;
-  }
-  
-  /* Year button styles */
-  .year-button {
-    color: #ffffff; /* White text */
+
+/* Heading styles */
+.heading {
+  color: #fff;
+  font-size: 36px;
+  margin-bottom: 20px;
+}
+
+/* Year button styles */
+/* Year button styles */
+/* Year button container styles */
+
+
+/* Year button styles */
+/* Year button container styles */
+.year-button-container {
+  display: flex;
+  gap: 20px;
+  background-color: white; /* White background color */
+  padding-left: 0px;
+  padding-right: 0px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  justify-content: center;
+  width:49%;
+  margin: auto;
+  border-radius: 60px;/* Add border radius */
+}
+
+/* Year button styles */
+.year-button {
+  color: red; /* Red text color */
   font-family: 'Bangers', cursive;
   font-size: 24px; /* Larger font size */
   cursor: pointer;
   text-align: center;
-  padding: 15px 30px; /* Increase padding */
-  transition: background-color 0.3s, transform 0.3s;
+  padding: 20px 33px; /* Increase padding */
   border: none;
   outline: none;
-  background-color: transparent;
-  }
+  background-color: transparent; /* Transparent background */
+  transition: background-color 0.3s;
+  border-radius: 50px; /* Add transition for background color */
+}
 
-  .year-button:hover {
-    background-color: #fffcfc; /* Dark background color on hover */
-    color: rgb(255, 0, 0);
-    transform: scale(1.1);
-  }
-  
-  .year-button.active {
-    font-weight: bold;
-    background-color: #ffffff;
-    color: rgb(251, 2, 2);
-  }
-  
 
-  /* Year content styles */
-  .year-content {
-    overflow: hidden;
-    transition: max-height 0.3s ease-out;
-    margin-top: 10px; /* Add space between button and content */
-  }
-  
-  /* Active year styles */
-  .team-year.active .year-content {
-    max-height: 1000px; /* Adjust the maximum height as needed */
-  }
-  
-  /* Team scroll container styles */
-  .team-scroll-container {
-    display: flex;
-    overflow-x: auto;
-    gap: 20px;
-    padding: 20px 0;
-  }
-  
-  /* Team member styles */
-  .team-member {
-    flex: 0 0 auto;
-    text-align: center;
-  }
-  
-  /* Team member photo styles */
-  .team-member-photo {
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
-    object-fit: cover;
-    margin: 0 auto;
-  }
-  
-  /* Team member name styles */
-  .team-member-name {
-    margin-top: 10px;
-    font-weight: bold;
-    font-size: 18px;
-  }
-  
-  /* Red text color for team member names */
-  .red-text {
-    color: red;
-  }
-  
-  /* Team member description styles */
-  .team-member-description {
-    font-size: 24px;
-    color: #fff;
-  }
+.year-button.active {
+  font-weight: bold;
+  background-color: black;
+  transition:0.5s;
+  color: white;
+
+}
+
+/* Team section styles */
+.team-section {
+  background-color: #a80101;
+  padding: 30px;
+  width: 80%;
+  border-radius: 20px;
+  margin-top: 50px; /* Add space above the team section */
+}
+
+
+/* Year content styles */
+.year-content {
+  overflow: hidden;
+  transition: max-height 0.3s ease-out;
+  margin-top: 10px; /* Add space between button and content */
+}
+
+/* Active year styles */
+.team-year.active .year-content {
+  max-height: 1000px; /* Adjust the maximum height as needed */
+}
+
+/* Team scroll container styles */
+.team-scroll-container {
+  display: flex;
+  overflow-x: auto;
+  gap: 20px;
+  padding: 20px 0;
+  scrollbar-width: thin; /* Thin scrollbar */
+  scrollbar-color: #ffffff transparent; /* Scrollbar track color and thumb color */
+}
+
+/* Custom scrollbar track */
+.team-scroll-container::-webkit-scrollbar {
+  width: 8px; /* Thin scrollbar width */
+  border-radius: 4px; /* Rounded corners */
+}
+
+/* Custom scrollbar thumb */
+.team-scroll-container::-webkit-scrollbar-thumb {
+  background-color: #ffffff; /* Scrollbar thumb color */
+  border-radius: 4px; /* Rounded corners */
+}
+
+/* Custom scrollbar thumb on hover */
+.team-scroll-container::-webkit-scrollbar-thumb:hover {
+  background-color: #000000; /* Scrollbar thumb color on hover */
+}
+
+/* Team member styles */
+.team-member {
+  flex: 0 0 auto;
+  text-align: center;
+}
+
+/* Team member photo styles */
+.team-member-photo {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin: 0 auto;
+}
+
+/* Team member name styles */
+.team-member-name {
+  margin-top: 10px;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+/* Red text color for team member names */
+.red-text {
+  color: red;
+}
+
+/* Team member description styles */
+.team-member-description {
+  font-size: 24px;
+  color: #fff;
+}
+/* Hover slider styles */
+.hs {
+  display: flex;
+  overflow-x: auto;
+  gap: 20px;
+  padding: 20px 0;
+  scrollbar-width: thin; /* Thin scrollbar */
+  scrollbar-color: #ffffff transparent; /* Scrollbar track color and thumb color */
+}
+
+/* Custom scrollbar track */
+.hs::-webkit-scrollbar {
+  width: 8px; /* Thin scrollbar width */
+  border-radius: 4px; /* Rounded corners */
+}
+
+/* Custom scrollbar thumb */
+.hs::-webkit-scrollbar-thumb {
+  background-color: #ffffff; /* Scrollbar thumb color */
+  border-radius: 4px; /* Rounded corners */
+}
+
+/* Custom scrollbar thumb on hover */
+.hs::-webkit-scrollbar-thumb:hover {
+  background-color: #000000; /* Scrollbar thumb color on hover */
+}

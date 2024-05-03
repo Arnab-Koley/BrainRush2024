@@ -35,20 +35,21 @@ const Team = () => {
       <Heading title="Our Team" />
 
       {/* Render year buttons */}
-      <div className="flex justify-center gap-4">
-        {Object.keys(groupedTeamMembers).map((year) => (
-          <button
-            key={year}
-            className={`year-button ${activeYear === year ? 'active' : ''}`}
-            onClick={() => toggleYear(year)}
-          >
-            {year}
-          </button>
-        ))}
-      </div>
+      <div className="year-button-container">
+  {Object.keys(groupedTeamMembers).map((year) => (
+    <button
+      key={year}
+      className={`year-button ${activeYear === year ? 'active' : ''}`}
+      onClick={() => toggleYear(year)}
+    >
+      {year}
+    </button>
+  ))}
+</div>
+
 
       {/* Render team members */}
-      <div className="team-scroll-container">
+      <div className="team-scroll-container hs">
         {activeYear && groupedTeamMembers[activeYear].map((member, index) => (
           <div key={index} className="team-member">
             <img className="team-member-photo" src={member.photo} alt="" />
