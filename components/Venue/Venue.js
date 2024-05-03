@@ -8,10 +8,10 @@ import "./Venue.css";
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/autoplay";
-import Venue1 from "public/assets/images/Venue1.jpeg";
-import Venue2 from "public/assets/images/Venue2.jpeg";
-import Venue3 from "public/assets/images/Venue3.jpeg";
-import Venue4 from "public/assets/images/Venue4.jpeg";
+import Venue1 from "../../public/assets/images/Venue1.jpeg";
+import Venue2 from "../../public/assets/images/Venue2.jpeg";
+import Venue3 from "../../public/assets/images/Venue3.jpeg";
+import Venue4 from "../../public/assets/images/Venue4.jpeg";
 
 import { Preahvihear } from "next/font/google";
 

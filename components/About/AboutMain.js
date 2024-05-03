@@ -1,9 +1,9 @@
 import React from "react";
 import Image from "next/image";
 // import 'animate.css';
-import About1 from "public/assets/images/About1.JPG";
-import About2 from "public/assets/images/About2.JPG";
-import About3 from "public/assets/images/About3.JPG";
+import About1 from "../../public/assets/images/About1.JPG";
+import About2 from "../../public/assets/images/About2.JPG";
+import About3 from "../../public/assets/images/About3.JPG";
 import { Bangers, Preahvihear } from "next/font/google";
 
 const preahvihear = Bangers({

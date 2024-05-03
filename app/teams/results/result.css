@@ -1,0 +1,67 @@
+.full-screen-image {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* This ensures the image covers the entire container */
+  z-index: -2;
+}
+
+.dark-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.784); /* Adjust the opacity (last value) to darken/lighten */
+  z-index: -1; /* Make sure it's just behind the image */
+}
+
+.main{
+  display: flex;
+
+}
+
+.left{
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.card{
+  background-color: rgba(0, 0, 0, 0.71);
+  width: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border: 2px solid white;
+  border-radius: 15px;
+}
+
+.name{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 30px 0;
+  color: white;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  font-size: 40px;
+}
+
+.desc{
+  background-color: yellow;
+  text-align: center;
+
+}
+
+.resultbtn{
+  display: flex;
+  text-align: center;
+
+}
+
+.right{
+  background-color: blue;
+
+}
