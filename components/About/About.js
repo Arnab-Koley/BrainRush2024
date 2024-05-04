@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./About.css";
 import AboutMain from "./AboutMain";
-import Venue from "@components/Venue/Venue";
+// import Venue from "@components/Venue/Venue";
 import { Bangers } from "next/font/google";
 
 const preahvihear = Bangers({
@@ -11,16 +11,18 @@ const preahvihear = Bangers({
 
 function About() {
   const [activeTab, setActiveTab] = useState("about");
+  const [heading, setHeading] = useState("Know More About Us");
 
   const handleTabChange = (tab) => {
     setActiveTab(tab);
+    setHeading(tab === "about" ? "About Us" : "Our Venue");
   };
 
   return (
     <>
       <section className="about-section" id="about">
         <h2 className="about-heading">
-          <span className={preahvihear.className}>Know More About Us</span>
+          <span className={preahvihear.className}>{heading}</span>
         </h2>
         <div className="about-buttons-container">
           <div
@@ -46,7 +48,7 @@ function About() {
         </div>
         <div className="about-content">
           {activeTab === "about" && <AboutMain />}
-          {activeTab === "venue" && <Venue />}
+          {/* {activeTab === "venue" && <Venue />} */}
         </div>
       </section>
     </>

@@ -6,24 +6,15 @@
    /* Center align FAQ container */
 }
 
+/* FAQ Item Styles */
 .faq-item {
   margin-bottom: 20px;
   border: 1px solid #ccc; /* Add border */
   border-radius: 8px; /* Add border radius */
-  background-color: white; /* Set background color to white */
+  background-color: #f0f0f0; /* Set background color to light grey */
   position: relative; /* Relative positioning */
 }
 
-.faq-content {
-  padding: 20px;
-}
-
-.close-icon {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  cursor: pointer;
-}
 .faq-item summary {
   font-size: 20px;
   font-weight: bold;
@@ -32,7 +23,21 @@
   display: flex; /* Use flexbox to align hammer and question */
   align-items: center; /* Align items vertically */
   padding: 12px 20px 8px 0; /* Adjust padding */
+  color: #333; /* Dark grey color for questions */
 }
+
+.faq-content {
+  padding: 20px;
+  color: #666; /* Light grey color for answers */
+}
+
+.close-icon {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+}
+
 
 .faq-item p {
   font-size: 18px; /* Reduce font size */
