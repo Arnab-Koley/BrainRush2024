@@ -27,38 +27,34 @@ const Profile = () => {
   const [contact, setContact] = useState(profileData?.phoneNumber);
   const [loading, setLoading] = useState(false);
   
-  const [phone, setPhone] = useState(contact || '');
+  const [phone, setPhone] = useState(contact);
   const [errorMessage, setErrorMessage] = useState(null);
+  const previousInputRef = useRef(''); // Store previous input value
 
   const handleChange1 = (event) => {
-    const newPhone = event.target.value.replace(/\D/g, ''); // Remove non-digits
-    const caretPos = event.target.selectionStart; // Get caret position
+    const newPhone = event.target.value; // Capture original input
 
-    // Check if backspace is pressed and exceeding limit
-    const isBackspace = event.inputType === 'deleteContentBackward';
-    if (isBackspace && newPhone.length === 10) {
-      // Allow backspace if at the end (or near the end due to mobile caret behavior)
-      if (caretPos === newPhone.length || caretPos >= newPhone.length - 2) {
-        setPhone(newPhone);
-      }
-      return; // Prevent further processing for backspace at limit
-    }
+    // Update state with filtered value (remove non-digits)
+    setPhone(newPhone.replace(/\D/g, ''));
 
+    // Validation based on the original input
     if (newPhone.length > 10) {
       setErrorMessage('Phone number cannot exceed 10 digits.');
+    } else if (!/^\d+$/.test(newPhone)) { // Check for only digits in original input
+      setErrorMessage('Please enter only numbers (0-9).');
     } else {
       setErrorMessage(null);
     }
 
-    setPhone(newPhone);
+    previousInputRef.current = phone;
   };
 
-  const [text, setText] = useState(name||'');
+  const [text, setText] = useState(name);
   const [errorMessage2, setErrorMessage2] = useState(null);
 
   const handleChange2 = (event) => {
-    const newText = event.target.value.replace(/[^a-zA-Z ]/g, ''); // Remove non-alphabets and spaces
-    setText(newText);
+    const newText = event.target.value;  // Remove non-alphabets and spaces
+    setText(newText.replace(/[^a-zA-Z ]/g, ''));
 
     if (newText.length > 0 && !/^[a-zA-Z ]+$/.test(newText)) {
       setErrorMessage2('Only alphabets and spaces are allowed.');
@@ -98,10 +94,10 @@ const Profile = () => {
       const { data } = await axios.put(
         `${process.env.NEXT_PUBLIC_BASE_URL}/api/user`,
         {
-          name,
+          name:text,
           department,
           year,
-          contact,
+          contact:phone,
         }
       );
       
@@ -154,6 +150,7 @@ const Profile = () => {
                   value={text || ""}
                   onChange={handleChange2}
                 />
+                {errorMessage2 && <div className="error-message2 pt-2 pl-3">{'! '}{errorMessage2}</div>}
               </div>
               <div>
                 <label
@@ -197,7 +194,7 @@ const Profile = () => {
                   value={phone == "1234567890" ? "" : phone || ""}
                   onChange={handleChange1}
                 />
-                {errorMessage && <div className="error-message">{errorMessage}</div>}
+                {errorMessage && <div className="error-messagept-2 pt-2 pl-3">{'! '}{errorMessage}</div>}
               </div>
               <div>
                 <label

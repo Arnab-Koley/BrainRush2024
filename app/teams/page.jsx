@@ -162,28 +162,11 @@ const Teams = () => {
       ) : (
         <>
           {isAlreadyInTeam ? (
-            <section className="text-gray-600 w-full flex justify-center items-center body-font sm:mx-0 ">
-              <div className="container w-3/4 py-24 flex flex-wrap items-center justify-content">
-              <button className="p-6">
-                <Link href="/">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke-width="3"
-                    stroke="white"
-                    class="w-8 h-8"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      d="M9 15 3 9m0 0 6-6M3 9h12a6 6 0 0 1 0 12h-3"
-                    />
-                  </svg>
-                </Link>
-              </button>
+            <section className="text-gray-600 w-full flex items-center justify-center body-font sm:mx-0 ">
+              <div className="md:w-3/4 flex items-center justify-center w-full py-24">
+              
                 <div className="flex flex-wrap items-center justify-center md:w-full  lg:w-1/2 mainTeamButton">
-                  <div className="p-2 w-3/4 hover:scale-105 shadow-md shadow-white">
+                  <div className="p-2 w-11/12 md:w-3/4 hover:scale-105 shadow-md shadow-white">
                     <div className="flex border-2 rounded-lg border-white teaminnerbutton border-opacity-50 p-8 sm:flex-row flex-col">
                       <div className="w-16 h-16 sm:mr-8 sm:mb-0 mb-4 inline-flex items-center justify-center rounded-full bg-indigo-100 text-indigo-500 flex-shrink-0">
                         <svg
@@ -206,13 +189,13 @@ const Teams = () => {
                           Team Name:{" "}
                           <span className="text-white"> {team?.teamName}</span>
                         </h1>
-                        <p className="leading-relaxed text-base text-gray-400 mb-3">
+                        <p className="leading-relaxed text-base text-slightgray mb-3">
                           Team Leader:{" "}
                           <span className="text-white">
                             {team?.leader?.name}
                           </span>
                         </p>
-                        <p className="leading-relaxed text-base text-gray-400 mb-3">
+                        <p className="leading-relaxed text-base text-slightgray mb-3">
                           Payment Status:{" "}
                           <span className="text-white">
                             {" "}
@@ -220,14 +203,14 @@ const Teams = () => {
                           </span>
                         </p>
                         {team?.teamMemberConfirmation ? (
-                          <p className="leading-relaxed text-base text-gray-400 mb-3">
+                          <p className="leading-relaxed text-base text-slightgray mb-3">
                             Team Member:{" "}
                             <span className="text-white">
                               {team?.teamMember.name}
                             </span>{" "}
                           </p>
                         ) : (
-                          <p className="leading-relaxed text-base text-gray-400 mb-3">
+                          <p className="leading-relaxed text-base text-slightgray mb-3">
                             Team Member:{" "}
                             <span className="text-white">Not Joined</span>
                           </p>
@@ -277,9 +260,9 @@ const Teams = () => {
 
                         {!team?.teamMemberConfirmation &&
                           sentRequestFromTheTeam && (
-                            <h1 className={preahvihear.className}>
+                            <h1 className="text-slightgray">
                               Request sent to:{" "}
-                              <strong>
+                              <strong className="text-white">
                                 {sentRequestFromTheTeam?.teamMemberEmail}
                               </strong>
                             </h1>
