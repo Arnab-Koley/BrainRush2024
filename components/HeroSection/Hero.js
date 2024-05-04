@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
-import {Rubik_Dirt } from "next/font/google";
+import { Rubik_Dirt } from "next/font/google";
 import Countdown from "./../Countdown/Countdown";
+import TypingEffect from "./TypingEffect";
 import './hero.css';
 
 const preahvihear = Rubik_Dirt({
@@ -17,7 +18,7 @@ const Hero = () => {
     let index = 0;
     const loop = () => {
       index++;
-      if (index > classes.length - 1) index = 0;
+      if (index > classes.length - 1) index = 1;
       avenger.className = `avenger avenger--${classes[index]}`;
       setTimeout(loop, duration);
     };
@@ -26,23 +27,26 @@ const Hero = () => {
   }, []);
 
   return (
-    <section className="overflow-hidden py-10">
-      <div className="hero-container">
+    <section className="overflow-hidden py-10 relative">
+      <div className="hero-container relative">
         <div className="text-center">
           <h1 className="text-headerText text-45xl sm:text-7xl font-bold mb-20 responsive-padding">
-            <span className={preahvihear.className} style={{ color: "white" }}>BrainRush-2K24</span>
+            <span className={preahvihear.className} style={{ color: "white" }}>
+              <TypingEffect />
+            </span>
           </h1>
-          <h1 className="text-white-500 text-3xl sm:text-l font-bold mb-20 responsive-padding">
-<br/>
-</h1>
-          <Countdown style={{ marginTop: '10px' }} />
+         
         </div>
+        <div style={{ marginTop: '10px' }}>
+            <Countdown />
+          </div>
         <div className="flex items-center justify-center">
           <div className="avenger">
             <div className="avenger__icon"></div>
           </div>
         </div>
       </div>
+      
     </section>
   );
 };

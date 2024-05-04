@@ -14,43 +14,39 @@
 
 /* Year button styles */
 /* Year button container styles */
+/* Year button container styles */
+/* Year button container styles */
+/* Year button container styles */
 .year-button-container {
   display: flex;
   gap: 20px;
-  background-color: rgb(131, 3, 3); /* White background color */
-  padding-left: 0px;
-  padding-right: 0px;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  justify-content: center;
-  width:49%;
-
+  background-image: url('../../public/assets/images/marvelbg.jpeg');;
+  padding: 10px 0; /* Adjust padding */
+  justify-content: space-evenly;
+  width: 50%; /* Adjust width to fit content */
   margin: auto;
-  border-radius: 60px;/* Add border radius */
+  border-radius: 60px;
 }
-
 /* Year button styles */
 .year-button {
-  color: black; /* Red text color */
+  color: black;
   font-family: 'Bangers', cursive;
-  font-size: 24px; /* Larger font size */
+  font-size: 20px;
   cursor: pointer;
   text-align: center;
-  padding: 20px 33px; /* Increase padding */
+ 
+  padding: 20px 20px;
   border: none;
   outline: none;
-  background-color: transparent; /* Transparent background */
-  transition: background-color 0.3s;
-  border-radius: 50px; /* Add transition for background color */
+  background-color: transparent;
+  border-radius: 50px;
+  transition: background-color 0.3s; /* Smooth transition */
 }
-
 
 .year-button.active {
   font-weight: bold;
   background-color: black;
-  transition:0.5s;
   color: white;
-
 }
 
 /* Team section styles */

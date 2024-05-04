@@ -20,9 +20,9 @@ weight: ["400"],});
 // };
 
 export default function RootLayout({ children }) {
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   useEffect(() => {
-    setLoading(true);
+    setLoading(false);
     setTimeout(() => {
       setLoading(false);
     }, 5000);

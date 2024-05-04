@@ -1,6 +1,7 @@
 /* About section styling */
 .about-section {
-  background-image: url('../../public/assets/images/vintagebg.jpg');
+  /* background-image: url('../../public/assets/images/vintagebg.jpg'); */
+  background: linear-gradient(rgba(0, 0, 0, 0.162),rgba(0, 0, 0, 0.047)),url('../../public/assets/images/vintagebg.jpg');
   background-size: cover;
   background-position: center;
   padding: 20px;
