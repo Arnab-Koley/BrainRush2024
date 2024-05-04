@@ -8,6 +8,7 @@ import { useRouter } from "next/navigation";
 import { setTeam, setTeamRequest } from "@Reducers/features/team";
 import Loader from "@components/Loader/Loader";
 import axios from "axios";
+import Link from "next/link";
 
 const preahvihear = Preahvihear({
   subsets: ["latin"],
@@ -54,13 +55,31 @@ const createTeam = () => {
   ) : (
     <>
       <section>
-        <div className="py-8 lg:py-16 px-4 mx-auto max-w-screen-md">
+      <button className="p-6">
+                <Link href="/teams">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke-width="3"
+                    stroke="white"
+                    class="w-8 h-8"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M9 15 3 9m0 0 6-6M3 9h12a6 6 0 0 1 0 12h-3"
+                    />
+                  </svg>
+                </Link>
+              </button>
+        <div className="py-8 lg:py-16 px-4 mt-0 md:mt-12 mx-auto max-w-screen-md">
           <h2 className="mb-4 text-4xl tracking-tight font-extrabold text-center text-headerText ">
             <span className="text-white">Create Your Team</span>
           </h2>
 
           <p className="mb-8 lg:mb-16 font-medium text-center text-subHeaderText sm:text-xl">
-            <span className={preahvihear.className}>
+            <span >
               Create your own team by entering your team name and your team
               mate's email!
             </span>
@@ -79,7 +98,7 @@ const createTeam = () => {
               <input
                 type="text"
                 id="email"
-                className="shadow-md shadow-white bg-inputBgColor border-gray-300 text-white text-xl rounded-lg focus:ring-primary-500 focus:border-gray-50 block w-full p-2.5 placeholder-gray-400"
+                className="shadow-md h-2 lg:h-full shadow-white bg-inputBgColor border-gray-300 text-white text-xl rounded-lg focus:ring-primary-500 focus:border-gray-50 block w-full p-2.5 placeholder-gray-400"
                 placeholder="Team Name"
                 required
                 value={teamName}
@@ -101,7 +120,7 @@ const createTeam = () => {
               <input
                 type="email"
                 id="email"
-                className="shadow-md shadow-white bg-inputBgColor border-gray-300 text-white text-xl rounded-lg focus:ring-primary-500 focus:border-gray-50 block w-full p-2.5 placeholder-gray-400"
+                className="shadow-md h-2 lg:h-full shadow-white bg-inputBgColor border-gray-300 text-white text-xl rounded-lg focus:ring-primary-500 focus:border-gray-50 block w-full p-2.5 placeholder-gray-400"
                 placeholder="Team Member Email"
                 required
                 value={teamMemberEmail}
