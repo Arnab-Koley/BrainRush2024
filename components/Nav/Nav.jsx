@@ -65,7 +65,26 @@ function Navbar() {
   };
 
   const getProfileDetails = async () => {
-    try {
+    try {// Update the button elements in your Navbar component
+      <button
+        type="button"
+        className="flex mr-3 text-sm bg-gray-800 rounded-full md:mr-0 navbar-button"
+        id="user-menu-button"
+        aria-expanded={isUserDropdownOpen}
+        data-dropdown-toggle="user-dropdown"
+        data-dropdown-placement="bottom"
+        onClick={toggleUserDropdown}
+      >
+        <span className="sr-only">Open user menu</span>
+        <Image
+          className="w-8 h-8 rounded-full border-2 border-subHeaderText"
+          src={user?.image}
+          alt="user photo"
+          height={50}
+          width={50}
+        />
+      </button>
+      
       const { data } = await axios.get(
         `${process.env.NEXT_PUBLIC_BASE_URL}/api/user`
       );
