@@ -20,13 +20,53 @@
 }
 
 /* Set base colors */
-body {
-    color: #ff0000; /* Red font color */
-    /* Set the background image */
-    background: rgb(2,0,36);
-    background: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(58, 6, 4, 0.9) 49%, rgba(0,0,0,1) 100%);
-    background-repeat: repeat; /* Repeat the background image */
+/* Remove Tailwind CSS import */
+/* Apply Marvel font to all text */
+* {
+    font-family: 'Bangers', sans-serif; /* Substitute with a Marvel-like font */
 }
+
+/* Set base colors */
+/* body {
+    color: #ff0000;  */
+    
+    /* background: rgb(0,0,0); */
+    /* background: linear-gradient(45deg, rgb(16, 0, 50) 0%, rgb(9, 9, 9) 55%, rgb(35, 0, 0) 90%); */
+    /* background: white;
+    background-repeat: repeat; 
+    background-color: rgba(255, 255, 255, 1); }/* Repeat the background image */
+   
+  /* body {
+    margin: 0;
+    padding: 0;
+    width: 100vw;
+    height: 100vh;
+    background-image: url('https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.pxfuel.com%2Fen%2Fdesktop-wallpaper-xwwkt&psig=AOvVaw0NaRvkzu7q_SNIzDWkrk-Y&ust=1714897799908000&source=images&cd=vfe&opi=89978449&ved=0CBIQjRxqFwoTCIDL16TK84UDFQAAAAAdAAAAABAE'); 
+    background-attachment: fixed;/* Replace with your image path */
+    /* background-repeat: repeat; /* Make the image repeat */
+   /* Ensure the image fills the viewport */
+  
+   .full-screen-image {
+    background: linear-gradient(black, black);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -2;
+    opacity: 0.7;
+  }
+
+  .dark-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.544);
+    z-index: -1; 
+  }
 
 /* h1, h2, h3, h4, h5, h6 {
     text-shadow: 0 0 1px #fff, 0 0 1px #fff, 0 0 1px #fff, 0 0 20px #fff, 0 0 2px #ff0000, 0 0 2px #ff0000, 0 0 2px #ff0000; /
@@ -82,7 +122,7 @@ a {
     animation: floatAnimation 3s ease-in-out infinite;
 }
 ::-webkit-scrollbar {
-    width: 6px;
+    width: 3px;
   }
   
   ::-webkit-scrollbar-track {

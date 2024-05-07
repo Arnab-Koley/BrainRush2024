@@ -1,0 +1,33 @@
+@import url('https://fonts.gstatic.com');
+@import url('https://fonts.googleapis.com');
+@import url('https://fonts.googleapis.com/css2?family=Rubik+Dirt&display=swap');
+
+/* Define font */
+.rubik-dirt-regular {
+  font-family: "Rubik Dirt", system-ui;
+  font-weight: 400;
+  font-style: normal;
+}
+  
+ 
+  
+  .text {
+    width: 690px;
+    border-right: 3px solid;
+    animation: blink 2s step-end infinite, type 3.5s steps(13) forwards;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+  
+  @keyframes blink {
+    50% {
+      border-color: transparent;
+    }
+  }
+  
+  @keyframes type {
+    0% {
+      width: 0;
+    }
+  }
+  
