@@ -1,0 +1,15 @@
+.counter {
+    animation: count 2s ease-out;
+  }
+  
+  @keyframes count {
+    from {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  

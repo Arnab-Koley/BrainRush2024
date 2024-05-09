@@ -20,16 +20,22 @@
 .year-button-container {
   display: flex;
   gap: 20px;
-  background-image: url('../../public/assets/images/marvelbg.jpeg');;
+  border: solid;
+  border-color: white;
+  border-width: 2px;
+  background-image: url('../../public/assets/images/vintagebg.jpg');;
   padding: 10px 0; /* Adjust padding */
   justify-content: space-evenly;
-  width: 50%; /* Adjust width to fit content */
+  width: 52%; /* Adjust width to fit content */
   margin: auto;
   border-radius: 60px;
+  box-shadow: -5px 3px 13px -9px rgba(255,255,255,0.65);
+-webkit-box-shadow: -5px zpx 13px -9px rgba(255,255,255,0.65);
+-moz-box-shadow: -5px 7px 13px -9px rgba(255,255,255,0.65);
 }
 /* Year button styles */
 .year-button {
-  color: black;
+  color: rgb(255, 255, 255);
   font-family: 'Bangers', cursive;
   font-size: 20px;
   cursor: pointer;
@@ -45,17 +51,24 @@
 
 .year-button.active {
   font-weight: bold;
-  background-color: black;
+  transform: scale(1.1);
+  border: solid;
+  border-color: white;
+  border-width: 2px;
   color: white;
 }
 
 /* Team section styles */
 .team-section {
-  background-image: url('../../public/assets/images/bgof.webp');
+  background-color: rgb(0,0,0,0.4);
   background-size: cover;
   height:100%;
   padding: 30px;
+  border-color: white;
+  border-width: 1px;
+  color: white;
   width: 80%;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
   border-radius: 20px;
   margin-top: 50px; 
   margin-bottom: 120px;/* Add space above the team section */

@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import "./About.css";
 import AboutMain from "./AboutMain";
-// import Venue from "@components/Venue/Venue";
+
+import Venue from "@components/Venue/Venue";
 import { Bangers } from "next/font/google";
 
 const preahvihear = Bangers({
@@ -48,7 +49,7 @@ function About() {
         </div>
         <div className="about-content">
           {activeTab === "about" && <AboutMain />}
-          {/* {activeTab === "venue" && <Venue />} */}
+          {activeTab === "venue" && <Venue />}
         </div>
       </section>
     </>
