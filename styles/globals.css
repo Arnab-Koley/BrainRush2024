@@ -13,6 +13,18 @@
 * {
     font-family: 'Bangers', sans-serif; /* Substitute with a Marvel-like font */
 }
+
+body {
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  height: 100vh;
+  background-image: url('/assets/images/vintagebg.jpg');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}
+
 .bangers-regular {
     font-family: "Bangers", system-ui;
     font-weight: 400;

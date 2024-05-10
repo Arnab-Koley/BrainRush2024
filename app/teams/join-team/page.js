@@ -105,7 +105,7 @@ function page() {
                     requests.map((request, ind) => (
                       <div
                         key={ind}
-                        className="p-4 sm:w-full md:w-4/5 lg:w-2/3 hover:scale-105 mx-auto"
+                        className="p-4 bg-sbg rounded-lg sm:w-full md:w-4/5 lg:w-2/3 hover:scale-105 mx-auto"
                       >
                         <div className="shadow-md shadow-sboxshade flex border-2 rounded-lg border-gray-200 border-opacity-50 sm:p-3 lg:p-8 sm:flex-row flex-row">
                           <div className="w-16 h-16 sm:hidden lg:inline sm:mr-8 sm:mb-0 mb-4 inline-flex items-center justify-center rounded-full bg-indigo-100 text-indigo-500 flex-shrink-0">
