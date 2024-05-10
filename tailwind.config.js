@@ -29,6 +29,8 @@ module.exports = {
       btnColor: "#f06141",
       btnColorDark: "#c21111",
       inputBgColor: "#cacbd366",
+      inputBorder: '#05fa22',
+      sbg:'rgba(0, 0, 0, 0.5)',
       countDownText: "#0b99b3",
       navcol: "#F1B860",
       purple: { 500: "rgb(24, 13, 238)", 800: "#fff" },

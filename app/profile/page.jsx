@@ -30,6 +30,7 @@ const Profile = () => {
   const [phone, setPhone] = useState(contact);
   const [errorMessage, setErrorMessage] = useState(null);
   const previousInputRef = useRef(''); // Store previous input value
+  const [isError2, setIsError2] = useState(false);
 
   const handleChange1 = (event) => {
     const newPhone = event.target.value; // Capture original input
@@ -42,8 +43,10 @@ const Profile = () => {
       setErrorMessage('Phone number cannot exceed 10 digits.');
     } else if (!/^\d+$/.test(newPhone)) { // Check for only digits in original input
       setErrorMessage('Please enter only numbers (0-9).');
+      setIsError2(true);
     } else {
       setErrorMessage(null);
+      setIsError2(false);
     }
 
     previousInputRef.current = phone;
@@ -51,6 +54,7 @@ const Profile = () => {
 
   const [text, setText] = useState(name);
   const [errorMessage2, setErrorMessage2] = useState(null);
+  const [isError1, setIsError1] = useState(false);
 
   const handleChange2 = (event) => {
     const newText = event.target.value;  // Remove non-alphabets and spaces
@@ -58,8 +62,10 @@ const Profile = () => {
 
     if (newText.length > 0 && !/^[a-zA-Z ]+$/.test(newText)) {
       setErrorMessage2('Only alphabets and spaces are allowed.');
+      setIsError1(true);
     } else {
       setErrorMessage2(null);
+      setIsError1(false);
     }
   };
 
@@ -114,8 +120,8 @@ const Profile = () => {
   };
 
   return (
-    <section className=" mt-24">
-      <div className="py-8 lg:py-16 px-4 mx-auto max-w-screen-md">
+    <section className=" mt-24 pb-6">
+      <div className="py-8 bg-sbg rounded-lg lg:py-8 px-8 mx-auto max-w-screen-md">
         {loading ? (
           <Loader />
         ) : (
@@ -144,13 +150,13 @@ const Profile = () => {
                 <input
                   type="text"
                   id="email"
-                  className="profileInput h-2 lg:h-full shadow-md shadow-white bg-inputBgColor border-gray-300 text-white text-xl rounded-lg focus:ring-primary-500 focus:border-gray-50 block w-full p-2.5 "
+                  className={`profileInput h-2 lg:h-full shadow-md bg-inputBgColor border-gray-300 text-white text-xl rounded-lg focus:ring-primary-500 focus:border-gray-50 block w-full p-2.5 ${isError1? 'shadow-sheader': 'shadow-inputBorder' }`}
                   placeholder="Your Name"
                   required
                   value={text || ""}
                   onChange={handleChange2}
                 />
-                {errorMessage2 && <div className="error-message2 pt-2 pl-3">{'! '}{errorMessage2}</div>}
+                {errorMessage2 && <div className="error-message2 pt-2 pl-3 text-red">{'! '}{errorMessage2}</div>}
               </div>
               <div>
                 <label
@@ -190,11 +196,11 @@ const Profile = () => {
                   maxLength={10}
                   minLength={10}
                   required
-                  className="h-2 lg:h-full shadow-white profileInput shadow-md bg-inputBgColor border-gray-300 text-white text-xl rounded-lg focus:ring-primary-500 focus:border-gray-50 block w-full p-2.5 "
+                  className={`h-2 lg:h-full profileInput shadow-md bg-inputBgColor text-white text-xl rounded-lg  w-full p-2.5 ${isError2? 'shadow-sheader': 'shadow-inputBorder' }`}
                   value={phone == "1234567890" ? "" : phone || ""}
                   onChange={handleChange1}
                 />
-                {errorMessage && <div className="error-messagept-2 pt-2 pl-3">{'! '}{errorMessage}</div>}
+                {errorMessage && <div className="error-messagept-2 pt-2 pl-3 text-red">{'! '}{errorMessage}</div>}
               </div>
               <div>
                 <label
@@ -210,7 +216,7 @@ const Profile = () => {
                 <select
                   id="Department"
                   name="Department"
-                  className=" hover:cursor-pointer shadow-white profileInput shadow-md bg-inputBgColor border-gray-300 text-white text-xl rounded-lg focus:ring-primary-500 focus:border-gray-50 block w-full p-2.5 "
+                  className=" hover:cursor-pointer shadow-white profileInput shadow-md bg-inputBgColor focus:bg-inputBgColor border-gray-300 text-white text-xl rounded-lg focus:ring-primary-500 focus:border-gray-50 block w-full p-2.5 focus:text-background "
                   value={department || ""}
                   onChange={(e) => {
                     setDepartment(e.target.value);
