@@ -166,7 +166,7 @@ const Teams = () => {
               <div className="md:w-3/4 flex items-center justify-center w-full py-24">
               
                 <div className="flex flex-wrap items-center justify-center md:w-full  lg:w-1/2 mainTeamButton">
-                  <div className="p-2 w-11/12 md:w-3/4 hover:scale-105 shadow-md shadow-white">
+                  <div className="bg-sbg rounded-lg p-2 w-11/12 md:w-3/4 hover:scale-105 shadow-md shadow-white">
                     <div className="flex border-2 rounded-lg border-white teaminnerbutton border-opacity-50 p-8 sm:flex-row flex-col">
                       <div className="w-16 h-16 sm:mr-8 sm:mb-0 mb-4 inline-flex items-center justify-center rounded-full bg-indigo-100 text-indigo-500 flex-shrink-0">
                         <svg
@@ -371,7 +371,7 @@ const Teams = () => {
               <div className="container px-5 lg:py-16 mx-auto">
                 <div className=" flex flex-wrap gap-8 items-center justify-center -m-4">
                   <div className=" p-4 lg:w-1/3 md:w-full">
-                    <div className=" hover:scale-105 shadow-md shadow-sboxshade flex border-2 rounded-lg border-gray-200 teaminnerbutton border-opacity-50 p-8 sm:flex-row flex-col">
+                    <div className="bg-sbg rounded-lg hover:scale-105 shadow-md shadow-sboxshade flex border-2 border-gray-200 teaminnerbutton border-opacity-50 p-8 sm:flex-row flex-col">
                       <div className="w-16 h-16 sm:mr-8 sm:mb-0 mb-4 inline-flex items-center justify-center rounded-full bg-indigo-100 text-indigo-500 flex-shrink-0">
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
@@ -416,7 +416,7 @@ const Teams = () => {
                     </div>
                   </div>
                   <div className="p-4 lg:w-1/3 md:w-full">
-                    <div className="hover:scale-105 shadow-md shadow-sboxshade flex border-2 rounded-lg border-gray-200 border-opacity-50 p-8 sm:flex-row flex-col">
+                    <div className="bg-sbg rounded-lg hover:scale-105 shadow-md shadow-sboxshade flex border-2 border-gray-200 border-opacity-50 p-8 sm:flex-row flex-col">
                       <div className="w-16 h-16 sm:mr-8 sm:mb-0 mb-4 inline-flex items-center justify-center rounded-full bg-indigo-100 text-indigo-500 flex-shrink-0">
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
