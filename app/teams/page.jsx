@@ -235,7 +235,7 @@ const Teams = () => {
                                   <input
                                     type="text"
                                     id="email"
-                                    className="shadow-sm h-2 lg:h-full bg-inputBgColor border-gray-300 text-slightgray text-md rounded-lg focus:ring-primary-500 focus:border-gray-50 block  p-1"
+                                    className="shadow-sm h-9 lg:h-full bg-inputBgColor border-gray-300 text-slightgray text-md rounded-lg focus:ring-primary-500 focus:border-gray-50 block  p-1"
                                     placeholder="Team Member Email"
                                     required
                                     value={teamMemberEmail}
@@ -244,7 +244,7 @@ const Teams = () => {
                                     }}
                                   />
                                 </div>
-                                <button
+                                {/* <button
                                   type="submit"
                                   className="mt-1 relative text-center inline-flex items-center justify-center p-0.5 ml-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-btnColorDark to-btnColor "
                                 >
@@ -253,7 +253,12 @@ const Teams = () => {
                                       Send
                                     </span>
                                   </span>
-                                </button>
+                                </button> */}
+                                <button type="submit" 
+                        onClick={handleRemoveRequest}
+                        className=" relative items-center justify-center mt-4 ml-1 text-white bg-gradient-to-r from-red-500 via-red-600 to-red-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-400 dark:focus:ring-red-800 shadow-md shadow-red-500/50 dark:shadow-lg dark:shadow-red-800/80 rounded-lg text-md font-semibold px-5 py-2.5 text-center me-2 mb-2 border border-red-800 hover:border-white hover:scale-105">
+                          Send
+                        </button>
                               </div>
                             </form>
                           )}
@@ -289,55 +294,75 @@ const Teams = () => {
                       {/* remove request */}
                       {!team?.teamMemberConfirmation &&
                         sentRequestFromTheTeam && (
-                          <button
-                            onClick={handleRemoveRequest}
-                            className="relative mt-5 text-center inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-btnColorDark to-btnColor hover:text-white  focus:ring-4 focus:outline-none focus:ring-purple-200 "
-                          >
-                            <span className="relative px-5 py-2.5 transition-all ease-in bg-white text-gray-700 duration-75 rounded-md group-hover:bg-opacity-0 group-hover:text-white">
-                              <span className={preahvihear.className}>
-                                Remove Request
-                              </span>
-                            </span>
-                          </button>
+                          // <button
+                          //   onClick={handleRemoveRequest}
+                          //   className="relative mt-5 text-center inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-btnColorDark to-btnColor hover:text-white  focus:ring-4 focus:outline-none focus:ring-purple-200 "
+                          // >
+                          //   <span className="relative px-5 py-2.5 transition-all ease-in bg-white text-gray-700 duration-75 rounded-md group-hover:bg-opacity-0 group-hover:text-white">
+                          //     <span className={preahvihear.className}>
+                          //       Remove Request
+                          //     </span>
+                          //   </span>
+                          // </button>
+                          <button type="submit" 
+                        onClick={handleRemoveRequest}
+                        className=" relative items-center justify-center mt-4 ml-1 text-white bg-gradient-to-r from-red-500 via-red-600 to-red-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-400 dark:focus:ring-red-800 shadow-md shadow-red-500/50 dark:shadow-lg dark:shadow-red-800/80 rounded-lg text-md font-semibold px-5 py-2.5 text-center me-2 mb-2 border border-red-800 hover:border-white hover:scale-105">
+                          Remove Request
+                        </button>
                         )}
                       {team?.teamMemberConfirmation && (
-                        <button
-                          onClick={handleQr}
-                          className="relative mt-5 text-center inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-btnColorDark to-btnColor hover:text-white  focus:ring-4 focus:outline-none focus:ring-purple-200 "
-                        >
-                          <span className="relative px-5 py-2.5 transition-all ease-in bg-white text-gray-700 duration-75 rounded-md group-hover:bg-opacity-0 group-hover:text-white">
-                            <span className="text-sbuttontext font-semibold">
-                              Team QR
-                            </span>
-                          </span>
+                        // <button
+                        //   onClick={handleQr}
+                        //   className="relative mt-5 text-center inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-btnColorDark to-btnColor hover:text-white  focus:ring-4 focus:outline-none focus:ring-purple-200 "
+                        // >
+                        //   <span className="relative px-5 py-2.5 transition-all ease-in bg-white text-gray-700 duration-75 rounded-md group-hover:bg-opacity-0 group-hover:text-white">
+                        //     <span className="text-sbuttontext font-semibold">
+                        //       Team QR
+                        //     </span>
+                        //   </span>
+                        // </button>
+                        <button type="submit" 
+                        onClick={handleQr}
+                        className=" relative items-center justify-center mt-4 ml-1 text-white bg-gradient-to-r from-red-500 via-red-600 to-red-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-400 dark:focus:ring-red-800 shadow-md shadow-red-500/50 dark:shadow-lg dark:shadow-red-800/80 rounded-lg text-md font-semibold px-5 py-2.5 text-center me-2 mb-2 border border-red-800 hover:border-white hover:scale-105">
+                          Submit
                         </button>
                       )}
 
                       {/* delete team */}
                       {!team?.payment ? (
                         user?.id === team?.leader?._id ? (
-                          <button
-                            onClick={handleDelete}
-                            className="relative mt-5 text-center inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-btnColorDark to-btnColor hover:text-white  focus:ring-4 focus:outline-none focus:ring-purple-200 "
-                          >
-                            <span className="relative px-5 py-2.5 transition-all ease-in bg-white text-gray-700 duration-75 rounded-md group-hover:bg-opacity-0 group-hover:text-white">
-                              <span className="text-sbuttontext font-semibold">
-                                Delete Team
-                              </span>
-                            </span>
-                          </button>
+                          // <button
+                          //   onClick={handleDelete}
+                          //   className="relative mt-5 text-center inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-btnColorDark to-btnColor hover:text-white  focus:ring-4 focus:outline-none focus:ring-purple-200 "
+                          // >
+                          //   <span className="relative px-5 py-2.5 transition-all ease-in bg-white text-gray-700 duration-75 rounded-md group-hover:bg-opacity-0 group-hover:text-white">
+                          //     <span className="text-sbuttontext font-semibold">
+                          //       Delete Team
+                          //     </span>
+                          //   </span>
+                          // </button>
+                          <button type="submit" 
+                        onClick={handleDelete}
+                        className=" relative items-center justify-center mt-4 ml-1 text-white bg-gradient-to-r from-red-500 via-red-600 to-red-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-400 dark:focus:ring-red-800 shadow-md shadow-red-500/50 dark:shadow-lg dark:shadow-red-800/80 rounded-lg text-md font-semibold px-5 py-2.5 text-center me-2 mb-2 border border-red-800 hover:border-white hover:scale-105">
+                          Delete Team
+                        </button>
                         ) : (
-                          <button
-                            type="submit"
-                            onClick={handleLeaveTeam}
-                            className="relative mt-5 text-center inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-btnColorDark to-btnColor hover:text-white  focus:ring-4 focus:outline-none focus:ring-purple-200 "
-                          >
-                            <span className="relative px-5 py-2.5 transition-all ease-in bg-white text-gray-700 duration-75 rounded-md group-hover:bg-opacity-0 group-hover:text-white">
-                              <span className={preahvihear.className}>
-                                Leave Team
-                              </span>
-                            </span>
-                          </button>
+                          // <button
+                          //   type="submit"
+                          //   onClick={handleLeaveTeam}
+                          //   className="relative mt-5 text-center inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-btnColorDark to-btnColor hover:text-white  focus:ring-4 focus:outline-none focus:ring-purple-200 "
+                          // >
+                          //   <span className="relative px-5 py-2.5 transition-all ease-in bg-white text-gray-700 duration-75 rounded-md group-hover:bg-opacity-0 group-hover:text-white">
+                          //     <span className={preahvihear.className}>
+                          //       Leave Team
+                          //     </span>
+                          //   </span>
+                          // </button>
+                          <button type="submit" 
+                        onClick={handleLeaveTeam}
+                        className=" relative items-center justify-center mt-4 ml-1 text-white bg-gradient-to-r from-red-500 via-red-600 to-red-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-400 dark:focus:ring-red-800 shadow-md shadow-red-500/50 dark:shadow-lg dark:shadow-red-800/80 rounded-lg text-md font-semibold px-5 py-2.5 text-center me-2 mb-2 border border-red-800 hover:border-white hover:scale-105">
+                          Leave Team
+                        </button>
                         )
                       ) : null}
                     </div>
@@ -403,14 +428,10 @@ const Teams = () => {
                           </span>
                         </p>
                         <Link href="teams/join-team">
-                          <button
-                            type="submit"
-                            className="relative mt-5 text-center inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-btnColorDark to-btnColor hover:text-white  focus:ring-4 focus:outline-none focus:ring-purple-200 "
-                          >
-                            <span className="relative px-5 py-2.5 transition-all ease-in bg-sbutton text-sbuttontext duration-75 rounded-md group-hover:bg-opacity-0 group-hover:text-white">
-                              <span className="font-bold">Join Team</span>
-                            </span>
-                          </button>
+                        <button type="submit" 
+                        className=" relative items-center justify-center mt-4 ml-1 text-white bg-gradient-to-r from-red-500 via-red-600 to-red-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-400 dark:focus:ring-red-800 shadow-md shadow-red-500/50 dark:shadow-lg dark:shadow-red-800/80 rounded-lg text-md font-semibold px-5 py-2.5 text-center me-2 mb-2 border border-red-800 hover:border-white hover:scale-105">
+                          Join Team
+                        </button>
                         </Link>
                       </div>
                     </div>
@@ -443,14 +464,10 @@ const Teams = () => {
                           </span>
                         </p>
                         <Link href="/teams/create-team">
-                          <button
-                            type="submit"
-                            className="relative mt-5 text-center inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-btnColorDark to-btnColor hover:text-white  focus:ring-4 focus:outline-none focus:ring-purple-200 "
-                          >
-                            <span className="relative px-5 py-2.5 transition-all ease-in bg-sbutton text-sbuttontext duration-75 rounded-md group-hover:bg-opacity-0 group-hover:text-white">
-                              <span className="font-bold">Create Team</span>
-                            </span>
-                          </button>
+                        <button type="submit" 
+                        className=" relative items-center justify-center mt-4 ml-1 text-white bg-gradient-to-r from-red-500 via-red-600 to-red-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-400 dark:focus:ring-red-800 shadow-md shadow-red-500/50 dark:shadow-lg dark:shadow-red-800/80 rounded-lg text-md font-semibold px-5 py-2.5 text-center me-2 mb-2 border border-red-800 hover:border-white hover:scale-105">
+                          Create Team
+                        </button>
                         </Link>
                       </div>
                     </div>
@@ -466,134 +483,3 @@ const Teams = () => {
 };
 
 export default Teams;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

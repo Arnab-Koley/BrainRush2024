@@ -51,7 +51,22 @@ module.exports = {
         300: "#fde047",
         500: "#eab308",
       },
-      red: "#ff0000",
+      black:{
+        DEFAULT:'#050505',
+      },
+      red: {
+        DEFAULT: '#F47675', // Adjust this to your desired base red
+        50: '#FEF2F2',
+        100: '#FDF1F1',
+        200: '#FCEAE6',
+        300: '#FBC2C2',
+        400: '#F89C9C',
+        500: '#F47675',
+        600: '#EF5350',
+        700: '#E91E2B',
+        800: '#83181F',
+        900: '#390B0F',
+      },
     },
   },
   plugins: [],
