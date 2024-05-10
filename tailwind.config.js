@@ -15,7 +15,14 @@ module.exports = {
     },
 
     colors: {
-      "primary-orange": "#FF5722",
+      sheader: "#eb131a",
+      stext: "#fcfcfc",
+      sbuttontext: "#4d4c4c",
+      sboxshade: "#fcfcfc",
+      sbutton: "#fcfcfc",
+      slightgray:"#c4bebf",
+
+
       headerText: "rgb(9 64 94)",
       background: "#0f172a",
       subHeaderText: "#ed3d15",

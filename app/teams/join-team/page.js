@@ -11,6 +11,7 @@ import { setTeam, setTeamRequest } from "@Reducers/features/team";
 import { useRouter } from "next/navigation";
 import { setRequest } from "@Reducers/features/requests";
 import axios from "axios";
+import Link from "next/link";
 
 const preahvihear = Preahvihear({
   subsets: ["latin"],
@@ -73,22 +74,40 @@ function page() {
       <div className="mt-30">
         {requests?.length === 0 ? (
           <h1 className="h-auto mt-80 font-bold text-subHeaderText text-4xl mx-auto text-center">
-            <span className={preahvihear.className}>
+            <span className=" text-stext font-semibold">
               You don't have any team requests.
             </span>
           </h1>
         ) : (
           <>
-            <section className="text-gray-600  px-2 body-font">
-              <div className="containe mx-auto">
+            <section className="text-stext px-2 body-font">
+              <button className="p-6">
+                <Link href="/teams">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke-width="3"
+                    stroke="white"
+                    class="w-8 h-8"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M9 15 3 9m0 0 6-6M3 9h12a6 6 0 0 1 0 12h-3"
+                    />
+                  </svg>
+                </Link>
+              </button>
+              <div className="containe mt-20 mx-auto">
                 <div className="flex flex-col -m- w-full items-center justify-center">
                   {requests &&
                     requests.map((request, ind) => (
                       <div
                         key={ind}
-                        className="p-4 sm:w-full md:w-4/5 lg:w-2/3 teamButton mx-auto"
+                        className="p-4 sm:w-full md:w-4/5 lg:w-2/3 hover:scale-105 mx-auto"
                       >
-                        <div className="flex border-2 rounded-lg border-gray-200 border-opacity-50 sm:p-3 lg:p-8 sm:flex-row flex-row">
+                        <div className="shadow-md shadow-sboxshade flex border-2 rounded-lg border-gray-200 border-opacity-50 sm:p-3 lg:p-8 sm:flex-row flex-row">
                           <div className="w-16 h-16 sm:hidden lg:inline sm:mr-8 sm:mb-0 mb-4 inline-flex items-center justify-center rounded-full bg-indigo-100 text-indigo-500 flex-shrink-0">
                             <svg
                               fill="none"
@@ -102,17 +121,19 @@ function page() {
                               <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
                             </svg>
                           </div>
-                          <div className="flex flex-row flex-wrap w-full items-center sm:justify-center md:justify-between">
+                          <div className=" flex flex-row flex-wrap w-full items-center sm:justify-center md:justify-between">
                             <div>
-                              <h1 className="leading-relaxed text-base">
-                                <span className={preahvihear.className}>
-                                  Team Name : {request?.team?.teamName}
+                              <h1 className="leading-relaxed text-slightgray">
+                                Team Name:{" "}
+                                <span className="text-stext font-semibold">
+                                  {request?.team?.teamName}
                                 </span>
                                 {/* Team Name : Poogle */}
                               </h1>
-                              <p className="leading-relaxed text-base mb-5">
-                                <span className={preahvihear.className}>
-                                  Team Leader: {request.teamLeader.name}
+                              <p className="leading-relaxed text-slightgray mb-5">
+                                Team Leader:{" "}
+                                <span className="text-stext font-semibold">
+                                  {request.teamLeader.name}
                                 </span>
                                 {/* Team Leader: Pratik Kumar Agarwal */}
                               </p>
@@ -130,7 +151,7 @@ function page() {
                                 className="relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-btnColorDark to-btnColor hover:text-white  focus:ring-4 focus:outline-none focus:ring-purple-200 "
                               >
                                 <span className="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white text-gray-900 hover:text-gray-50  rounded-md group-hover:bg-opacity-0">
-                                  <span className={preahvihear.className}>
+                                  <span className="text-sbuttontext font-semibold">
                                     Confirm
                                   </span>
                                 </span>
@@ -143,7 +164,7 @@ function page() {
                                 className="relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-btnColorDark to-btnColor hover:text-white  focus:ring-4 focus:outline-none focus:ring-purple-200 "
                               >
                                 <span className="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white text-gray-900 hover:text-gray-50  rounded-md group-hover:bg-opacity-0">
-                                  <span className={preahvihear.className}>
+                                  <span className="text-sbuttontext font-semibold">
                                     Ignore
                                   </span>
                                 </span>

@@ -8,6 +8,7 @@ import { useRouter } from "next/navigation";
 import { setTeam, setTeamRequest } from "@Reducers/features/team";
 import Loader from "@components/Loader/Loader";
 import axios from "axios";
+import Link from "next/link";
 
 const preahvihear = Preahvihear({
   subsets: ["latin"],
@@ -20,13 +21,48 @@ const createTeam = () => {
   const [loading, setLoading] = useState(false);
   const [teamName, setTeamName] = useState("");
   const [teamMemberEmail, setTeamMemberEmail] = useState("");
+
+  const [text, setText] = useState('');
+  const [errorMessage2, setErrorMessage2] = useState(null);
+
+  const handleChange2 = (event) => {
+    const newText = event.target.value;  // Remove non-alphabets and spaces
+    setText(newText.replace(/[^a-zA-Z ]/g, ''));
+
+    if (newText.length > 0 && !/^[a-zA-Z ]+$/.test(newText)) {
+      setErrorMessage2('Only alphabets and spaces are allowed.');
+    } else {
+      setErrorMessage2(null);
+    }
+  };
+
+  const [email, setEmail] = useState('');
+  const [errorMessage, setErrorMessage] = useState(null);
+
+  const handleChange1 = (event) => {
+    const newEmail = event.target.value; // Capture original input
+
+    // Update email state with filtered value (remove invalid characters)
+    const filteredEmail = newEmail.replace(/[^a-z0-9@_.-]/g, '');
+    setEmail(filteredEmail);
+
+    // Check for invalid characters directly
+    const invalidChars = newEmail.match(/[^a-z0-9@_.-]/g);
+    if (invalidChars) {
+      const errorMessage = `Invalid character(s): ${invalidChars.join(', ')}`;
+      setErrorMessage(errorMessage);
+    } else {
+      setErrorMessage(null); // Clear error message for valid email
+    }
+  };
+
   const handleCreateTeamSubmit = async (e) => {
     e.preventDefault();
     try {
       setLoading(true);
       const { data } = await axios.post(
         `${process.env.NEXT_PUBLIC_BASE_URL}/api/team`,
-        { teamName, teamMemberEmail }
+        { teamName:text, teamMemberEmail:email }
       );
 
       if (data.success) {
@@ -54,13 +90,31 @@ const createTeam = () => {
   ) : (
     <>
       <section>
-        <div className="py-8 lg:py-16 px-4 mx-auto max-w-screen-md">
+      <button className="p-6">
+                <Link href="/teams">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke-width="3"
+                    stroke="white"
+                    class="w-8 h-8"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M9 15 3 9m0 0 6-6M3 9h12a6 6 0 0 1 0 12h-3"
+                    />
+                  </svg>
+                </Link>
+              </button>
+        <div className="py-8 lg:py-16 px-4 mt-0 md:mt-12 mx-auto max-w-screen-md">
           <h2 className="mb-4 text-4xl tracking-tight font-extrabold text-center text-headerText ">
             <span className="text-white">Create Your Team</span>
           </h2>
 
           <p className="mb-8 lg:mb-16 font-medium text-center text-subHeaderText sm:text-xl">
-            <span className={preahvihear.className}>
+            <span >
               Create your own team by entering your team name and your team
               mate's email!
             </span>
@@ -79,14 +133,13 @@ const createTeam = () => {
               <input
                 type="text"
                 id="email"
-                className="shadow-md shadow-white bg-inputBgColor border-gray-300 text-white text-xl rounded-lg focus:ring-primary-500 focus:border-gray-50 block w-full p-2.5 placeholder-gray-400"
+                className="shadow-md h-2 lg:h-full shadow-white bg-inputBgColor border-gray-300 text-white text-xl rounded-lg focus:ring-primary-500 focus:border-gray-50 block w-full p-2.5 placeholder-gray-400"
                 placeholder="Team Name"
                 required
-                value={teamName}
-                onChange={(e) => {
-                  setTeamName(e.target.value);
-                }}
+                value={text}
+                onChange={handleChange2}
               />
+              {errorMessage2 && <div className="error-message2 pt-2 pl-3">{'! '}{errorMessage2}</div>}
             </div>
             <div>
               <label
@@ -101,14 +154,13 @@ const createTeam = () => {
               <input
                 type="email"
                 id="email"
-                className="shadow-md shadow-white bg-inputBgColor border-gray-300 text-white text-xl rounded-lg focus:ring-primary-500 focus:border-gray-50 block w-full p-2.5 placeholder-gray-400"
+                className="shadow-md h-2 lg:h-full shadow-white bg-inputBgColor border-gray-300 text-white text-xl rounded-lg focus:ring-primary-500 focus:border-gray-50 block w-full p-2.5 placeholder-gray-400"
                 placeholder="Team Member Email"
                 required
-                value={teamMemberEmail}
-                onChange={(e) => {
-                  setTeamMemberEmail(e.target.value);
-                }}
+                value={email}
+                onChange={handleChange1}
               />
+              {errorMessage && <div className="error-message2 pt-2 pl-3">{'! '}{errorMessage}</div>}
             </div>
 
             <button

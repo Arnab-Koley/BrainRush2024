@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import "./page.css";
 import { Preahvihear } from "next/font/google";
 import { useSelector, useDispatch } from "react-redux";
@@ -7,6 +7,7 @@ import { setProfile } from "@Reducers/features/profile";
 import { useRouter } from "next/navigation";
 import Loader from "@components/Loader/Loader";
 import axios from "axios";
+import Link from "next/link";
 
 const preahvihear = Preahvihear({
   subsets: ["latin"],
@@ -25,6 +26,43 @@ const Profile = () => {
   const [year, setYear] = useState(profileData?.year);
   const [contact, setContact] = useState(profileData?.phoneNumber);
   const [loading, setLoading] = useState(false);
+  
+  const [phone, setPhone] = useState(contact);
+  const [errorMessage, setErrorMessage] = useState(null);
+  const previousInputRef = useRef(''); // Store previous input value
+
+  const handleChange1 = (event) => {
+    const newPhone = event.target.value; // Capture original input
+
+    // Update state with filtered value (remove non-digits)
+    setPhone(newPhone.replace(/\D/g, ''));
+
+    // Validation based on the original input
+    if (newPhone.length > 10) {
+      setErrorMessage('Phone number cannot exceed 10 digits.');
+    } else if (!/^\d+$/.test(newPhone)) { // Check for only digits in original input
+      setErrorMessage('Please enter only numbers (0-9).');
+    } else {
+      setErrorMessage(null);
+    }
+
+    previousInputRef.current = phone;
+  };
+
+  const [text, setText] = useState(name);
+  const [errorMessage2, setErrorMessage2] = useState(null);
+
+  const handleChange2 = (event) => {
+    const newText = event.target.value;  // Remove non-alphabets and spaces
+    setText(newText.replace(/[^a-zA-Z ]/g, ''));
+
+    if (newText.length > 0 && !/^[a-zA-Z ]+$/.test(newText)) {
+      setErrorMessage2('Only alphabets and spaces are allowed.');
+    } else {
+      setErrorMessage2(null);
+    }
+  };
+
 
   useEffect(() => {
     setName(profileData?.name);
@@ -56,10 +94,10 @@ const Profile = () => {
       const { data } = await axios.put(
         `${process.env.NEXT_PUBLIC_BASE_URL}/api/user`,
         {
-          name,
+          name:text,
           department,
           year,
-          contact,
+          contact:phone,
         }
       );
       
@@ -106,14 +144,13 @@ const Profile = () => {
                 <input
                   type="text"
                   id="email"
-                  className="profileInput h-2 md:h-full shadow-md shadow-white bg-inputBgColor border-gray-300 text-white text-xl rounded-lg focus:ring-primary-500 focus:border-gray-50 block w-full p-2.5 "
+                  className="profileInput h-2 lg:h-full shadow-md shadow-white bg-inputBgColor border-gray-300 text-white text-xl rounded-lg focus:ring-primary-500 focus:border-gray-50 block w-full p-2.5 "
                   placeholder="Your Name"
                   required
-                  value={name || ""}
-                  onChange={(e) => {
-                    setName(e.target.value);
-                  }}
+                  value={text || ""}
+                  onChange={handleChange2}
                 />
+                {errorMessage2 && <div className="error-message2 pt-2 pl-3">{'! '}{errorMessage2}</div>}
               </div>
               <div>
                 <label
@@ -128,7 +165,7 @@ const Profile = () => {
                 <input
                   type="email"
                   id="email"
-                  className="h-2 md:h-full shadow-white profileInput shadow-md bg-inputBgColor border-gray-300 text-white text-xl rounded-lg focus:ring-primary-500 focus:border-gray-50 block w-full p-2.5 "
+                  className="h-2 lg:h-full shadow-white profileInput shadow-md bg-inputBgColor border-gray-300 text-white text-xl rounded-lg focus:ring-primary-500 focus:border-gray-50 block w-full p-2.5 "
                   placeholder="Your Email ID"
                   required
                   disabled
@@ -146,19 +183,18 @@ const Profile = () => {
                   </span>{" "}
                 </label>
                 <input
-                  type="text"
+                  type="tel"
                   id="phone"
                   name="phone"
                   placeholder="1234567890"
                   maxLength={10}
                   minLength={10}
                   required
-                  className="h-2 md:h-full shadow-white profileInput shadow-md bg-inputBgColor border-gray-300 text-white text-xl rounded-lg focus:ring-primary-500 focus:border-gray-50 block w-full p-2.5 "
-                  value={contact == "1234567890" ? "" : contact || ""}
-                  onChange={(e) => {
-                    setContact(e.target.value);
-                  }}
+                  className="h-2 lg:h-full shadow-white profileInput shadow-md bg-inputBgColor border-gray-300 text-white text-xl rounded-lg focus:ring-primary-500 focus:border-gray-50 block w-full p-2.5 "
+                  value={phone == "1234567890" ? "" : phone || ""}
+                  onChange={handleChange1}
                 />
+                {errorMessage && <div className="error-messagept-2 pt-2 pl-3">{'! '}{errorMessage}</div>}
               </div>
               <div>
                 <label
@@ -174,7 +210,7 @@ const Profile = () => {
                 <select
                   id="Department"
                   name="Department"
-                  className="h-2 md:h-full hover:cursor-pointer shadow-white profileInput shadow-md bg-inputBgColor border-gray-300 text-white text-xl rounded-lg focus:ring-primary-500 focus:border-gray-50 block w-full p-2.5 "
+                  className=" hover:cursor-pointer shadow-white profileInput shadow-md bg-inputBgColor border-gray-300 text-white text-xl rounded-lg focus:ring-primary-500 focus:border-gray-50 block w-full p-2.5 "
                   value={department || ""}
                   onChange={(e) => {
                     setDepartment(e.target.value);
@@ -208,7 +244,7 @@ const Profile = () => {
                 <select
                   id="Year"
                   name="Year"
-                  className="h-2 md:h-full hover:cursor-pointer profileInput shadow-md shadow-white bg-inputBgColor border-gray-300 text-white text-xl rounded-lg focus:ring-primary-500 focus:border-gray-50 block w-full p-2.5 "
+                  className=" hover:cursor-pointer profileInput shadow-md shadow-white bg-inputBgColor border-gray-300 text-white text-xl rounded-lg focus:ring-primary-500 focus:border-gray-50 block w-full p-2.5 "
                   value={year || ""}
                   onChange={(e) => {
                     setYear(e.target.value);
@@ -223,6 +259,7 @@ const Profile = () => {
                   <option value={2026}>2023-27</option>
                 </select>
               </div>
+              {/* <div className="flex justify-between"> */}
               <button
                 type="submit"
                 className="relative mt-5 text-center inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-btnColorDark to-btnColor hover:text-white  focus:ring-4 focus:outline-none focus:ring-purple-200 "
@@ -231,6 +268,14 @@ const Profile = () => {
                   <span className={preahvihear.className}>Submit Details</span>
                 </span>
               </button>
+              {/* <button className="relative mt-5 text-center inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-btnColorDark to-btnColor hover:text-white  focus:ring-4 focus:outline-none focus:ring-purple-200 ">
+                <Link href="/">
+                <span className="relative px-5 py-3 transition-all ease-in bg-white text-gray-700 duration-75 rounded-md group-hover:bg-opacity-0 group-hover:text-white">
+                  <span className={preahvihear.className}>Cancel</span>
+                </span>
+                </Link>
+              </button> */}
+              {/* </div> */}
 
               {/* <button type="button" className="text-white bg-gradient-to-r from-purple-500 to-pink-500 hover:bg-gradient-to-l focus:ring-4 focus:outline-none focus:ring-purple-200 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">Purple to Pink</button> */}
             </form>

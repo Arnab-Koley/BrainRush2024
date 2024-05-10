@@ -18,7 +18,7 @@
     "bcrypt": "^5.1.1",
     "dotenv": "^16.4.5",
     "framer-motion": "^11.1.7",
-    "mongodb": "^6.5.0",
+    "mongodb": "^6.6.0",
     "mongodb-client-encryption": "^6.0.0",
     "mongoose": "^8.3.3",
     "next": "14.2.3",
