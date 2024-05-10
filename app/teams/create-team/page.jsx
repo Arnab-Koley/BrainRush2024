@@ -171,13 +171,9 @@ const createTeam = () => {
               {errorMessage && <div className="error-message2 pt-2 pl-3 text-sheader">{'! '}{errorMessage}</div>}
             </div>
 
-            <button
-              type="submit"
-              className="relative mt-5 text-center inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-btnColorDark to-btnColor hover:text-white  focus:ring-4 focus:outline-none focus:ring-purple-200 "
-            >
-              <span className="relative px-5 py-2.5 transition-all ease-in bg-white text-gray-700 duration-75 rounded-md group-hover:bg-opacity-0 group-hover:text-white">
-                <span className={preahvihear.className}>Submit</span>
-              </span>
+            <button type="submit" 
+                        className=" relative items-center justify-center mt-4 ml-1 text-white bg-gradient-to-r from-red-500 via-red-600 to-red-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-400 dark:focus:ring-red-800 shadow-md shadow-red-500/50 dark:shadow-lg dark:shadow-red-800/80 rounded-lg text-md font-semibold px-5 py-2.5 text-center me-2 mb-2 border border-red-800 hover:border-white hover:scale-105">
+                          Submit
             </button>
 
             {/* <button type="button" className="text-white bg-gradient-to-r from-purple-500 to-pink-500 hover:bg-gradient-to-l focus:ring-4 focus:outline-none focus:ring-purple-200  font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">Purple to Pink</button> */}
