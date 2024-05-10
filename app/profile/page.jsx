@@ -122,7 +122,7 @@ const Profile = () => {
   };
 
   return (
-    <section className=" mt-24 pb-6">
+    <section className=" mt-24 pb-6 p-2">
       <div className="py-8 bg-sbg rounded-lg lg:py-8 px-8 mx-auto max-w-screen-md">
         {loading ? (
           <Loader />
