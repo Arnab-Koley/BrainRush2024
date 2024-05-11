@@ -17,8 +17,6 @@ export async function middleware(req) {
         headers: reqHeader,
       },
     });
-
-    // req.next()
   } catch (error) {
     console.log(error);
     return NextResponse.redirect(new URL("/", req.url));
