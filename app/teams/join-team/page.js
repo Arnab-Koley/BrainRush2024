@@ -33,7 +33,13 @@ function page() {
 
       if (data.success) {
         dispatch(setTeam(data.data));
-        dispatch(setTeamRequest(null));
+        dispatch(
+          setTeamRequest(
+            data?.data?.memberEmails?.filter(
+              (data) => data?.confirmation === true
+            )
+          )
+        );
         router.push("/teams");
       } else {
         alert(data?.message);
@@ -156,13 +162,15 @@ function page() {
                                   </span>
                                 </span>
                               </button> */}
-                              <button type="submit" 
-                        onClick={() => {
-                          handleAcceptTeam(request._id);
-                        }}
-                        className=" relative items-center justify-center mt-1 ml-1 text-white bg-gradient-to-r from-red-500 via-red-600 to-red-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-400 dark:focus:ring-red-800 shadow-md shadow-red-500/50 dark:shadow-lg dark:shadow-red-800/80 rounded-lg text-md font-semibold px-5 py-2.5 text-center me-2 mb-2 border border-red-800 hover:border-white hover:scale-105">
-                          Confirm
-                        </button>
+                              <button
+                                type="submit"
+                                onClick={() => {
+                                  handleAcceptTeam(request._id);
+                                }}
+                                className=" relative items-center justify-center mt-1 ml-1 text-white bg-gradient-to-r from-red-500 via-red-600 to-red-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-400 dark:focus:ring-red-800 shadow-md shadow-red-500/50 dark:shadow-lg dark:shadow-red-800/80 rounded-lg text-md font-semibold px-5 py-2.5 text-center me-2 mb-2 border border-red-800 hover:border-white hover:scale-105"
+                              >
+                                Confirm
+                              </button>
                               {/* <button
                                 type="submit"
                                 onClick={() => {
@@ -176,13 +184,15 @@ function page() {
                                   </span>
                                 </span>
                               </button> */}
-                              <button type="submit" 
-                        onClick={() => {
-                          handleRejectTeam(request._id);
-                        }}
-                        className=" relative items-center justify-center mt-1 ml-1 text-white bg-gradient-to-r from-red-500 via-red-600 to-red-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-400 dark:focus:ring-red-800 shadow-md shadow-red-500/50 dark:shadow-lg dark:shadow-red-800/80 rounded-lg text-md font-semibold px-5 py-2.5 text-center me-2 mb-2 border border-red-800 hover:border-white hover:scale-105">
-                          Ignore
-                        </button>
+                              <button
+                                type="submit"
+                                onClick={() => {
+                                  handleRejectTeam(request._id);
+                                }}
+                                className=" relative items-center justify-center mt-1 ml-1 text-white bg-gradient-to-r from-red-500 via-red-600 to-red-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-400 dark:focus:ring-red-800 shadow-md shadow-red-500/50 dark:shadow-lg dark:shadow-red-800/80 rounded-lg text-md font-semibold px-5 py-2.5 text-center me-2 mb-2 border border-red-800 hover:border-white hover:scale-105"
+                              >
+                                Ignore
+                              </button>
                             </div>
 
                             {/* <a className="mt-3 text-indigo-500 inline-flex ms-2 items-center">

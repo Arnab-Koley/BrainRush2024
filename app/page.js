@@ -21,7 +21,7 @@ import { setProfile } from "@Reducers/features/profile";
 import Schedule from "@components/Schedule/Schedule";
 import Loader from "@components/Loader/Loader";
 import Sponsor from "@components/Sponsors/Sponsor";
-import bg from "../public/assets/images/vintagebg.jpg"
+import bg from "../public/assets/images/vintagebg.jpg";
 // import { logo_loader } from "@/assets/images/logo_loader.mp4";
 // import { useEffect, useState } from "react";
 
@@ -42,7 +42,7 @@ export default function Home() {
       <Image src={bg} alt="" className="full-screen-image" />
       <Hero />
       <About />
-     
+
       <Schedule />
       <Team />
       {/* <Details /> */}

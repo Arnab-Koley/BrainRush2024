@@ -26,23 +26,24 @@ const Profile = () => {
   const [year, setYear] = useState(profileData?.year);
   const [contact, setContact] = useState(profileData?.phoneNumber);
   const [loading, setLoading] = useState(false);
-  
+
   const [phone, setPhone] = useState(contact);
   const [errorMessage, setErrorMessage] = useState(null);
-  const previousInputRef = useRef(''); // Store previous input value
+  const previousInputRef = useRef(""); // Store previous input value
   const [isError2, setIsError2] = useState("shadow-white");
 
   const handleChange1 = (event) => {
     const newPhone = event.target.value; // Capture original input
 
     // Update state with filtered value (remove non-digits)
-    setPhone(newPhone.replace(/\D/g, ''));
+    setPhone(newPhone.replace(/\D/g, ""));
 
     // Validation based on the original input
     if (newPhone.length > 10) {
-      setErrorMessage('Phone number cannot exceed 10 digits.');
-    } else if (!/^\d+$/.test(newPhone)) { // Check for only digits in original input
-      setErrorMessage('Please enter only numbers (0-9).');
+      setErrorMessage("Phone number cannot exceed 10 digits.");
+    } else if (!/^\d+$/.test(newPhone)) {
+      // Check for only digits in original input
+      setErrorMessage("Please enter only numbers (0-9).");
       setIsError2("shadow-sheader");
     } else {
       setErrorMessage(null);
@@ -57,18 +58,17 @@ const Profile = () => {
   const [isError1, setIsError1] = useState("shadow-white");
 
   const handleChange2 = (event) => {
-    const newText = event.target.value;  // Remove non-alphabets and spaces
-    setText(newText.replace(/[^a-zA-Z ]/g, ''));
+    const newText = event.target.value; // Remove non-alphabets and spaces
+    setText(newText.replace(/[^a-zA-Z ]/g, ""));
 
     if (newText.length > 0 && !/^[a-zA-Z ]+$/.test(newText)) {
-      setErrorMessage2('Only alphabets and spaces are allowed.');
+      setErrorMessage2("Only alphabets and spaces are allowed.");
       setIsError1("shadow-sheader");
     } else {
       setErrorMessage2(null);
       setIsError1("shadow-inputBorder");
     }
   };
-
 
   useEffect(() => {
     setName(profileData?.name);
@@ -78,35 +78,34 @@ const Profile = () => {
   }, [profileData]);
   useEffect(() => {
     setLoading(true);
+
     setTimeout(() => {
       setLoading(false);
     }, 2000);
   }, []);
   const submitHandler = async (event) => {
     event.preventDefault();
-    if (!name.length || !department.length || !year || !contact) {
-      alert("Fill the form completely!");
-      return;
-    }
+    // if (!name.length || !department.length || !year || !contact) {
+    //   alert("Fill the form completely!");
+    //   return;
+    // }
     const phoneNumberPattern = /^\d{10}$/; // Validates a 10-digit number
-    if (!phoneNumberPattern.test(contact))
-      return alert("Enter a valid phone number!");
-    if (department == "Select")
-      return alert("Select your department!");
-    if (year == "Select")
-      return alert("Select your batch!");
+    // if (!phoneNumberPattern.test(contact))
+    //   return alert("Enter a valid phone number!");
+    // if (department == "Select") return alert("Select your department!");
+    // if (year == "Select") return alert("Select your batch!");
     setLoading(true);
     try {
       const { data } = await axios.put(
         `${process.env.NEXT_PUBLIC_BASE_URL}/api/user`,
         {
-          name:text,
+          name: text,
           department,
           year,
-          contact:phone,
+          contact: phone,
         }
       );
-      
+
       if (data.success) {
         dispatch(setProfile(data.data));
         router.push("/teams");
@@ -145,7 +144,7 @@ const Profile = () => {
                   htmlFor="email"
                   className="block mb-2 text-sm text-gray-700 font-medium"
                 >
-                  <span className=' text-slightgray'>
+                  <span className=" text-slightgray">
                     Your Name<span className="text-red text-2xl">*</span>
                   </span>{" "}
                 </label>
@@ -158,14 +157,19 @@ const Profile = () => {
                   value={text || ""}
                   onChange={handleChange2}
                 />
-                {errorMessage2 && <div className="error-message2 pt-2 pl-3 text-red">{'! '}{errorMessage2}</div>}
+                {errorMessage2 && (
+                  <div className="error-message2 pt-2 pl-3 text-red">
+                    {"! "}
+                    {errorMessage2}
+                  </div>
+                )}
               </div>
               <div>
                 <label
                   htmlFor="subject"
                   className="block mb-2 text-sm text-gray-600 font-medium "
                 >
-                  <span className='text-slightgray'>
+                  <span className="text-slightgray">
                     {/* Your Name<span className="text-red text-2xl">*</span> */}
                     Your Email<span className="text-red text-2xl">*</span>
                   </span>{" "}
@@ -185,7 +189,7 @@ const Profile = () => {
                   htmlFor="subject"
                   className="block mb-2 text-gray-600 text-sm font-medium "
                 >
-                  <span className='text-slightgray'>
+                  <span className="text-slightgray">
                     {/* Your Name<span className="text-red text-2xl">*</span> */}
                     Contact Number<span className="text-red text-2xl">*</span>
                   </span>{" "}
@@ -202,14 +206,19 @@ const Profile = () => {
                   value={phone == "1234567890" ? "" : phone || ""}
                   onChange={handleChange1}
                 />
-                {errorMessage && <div className="error-messagept-2 pt-2 pl-3 text-red">{'! '}{errorMessage}</div>}
+                {errorMessage && (
+                  <div className="error-messagept-2 pt-2 pl-3 text-red">
+                    {"! "}
+                    {errorMessage}
+                  </div>
+                )}
               </div>
               <div>
                 <label
                   htmlFor="Department"
                   className="block mb-2 text-gray-600 text-sm font-medium "
                 >
-                  <span className='text-slightgray'>
+                  <span className="text-slightgray">
                     {/* Your Name<span className="text-red text-2xl">*</span> */}
                     Department<span className="text-red text-2xl">*</span>
                   </span>{" "}
@@ -223,7 +232,7 @@ const Profile = () => {
                   onChange={(e) => {
                     setDepartment(e.target.value);
                   }}
-                  required
+                  // required
                 >
                   <option value="">Select</option>
                   <option value="CSE">CSE</option>
@@ -243,7 +252,7 @@ const Profile = () => {
                   htmlFor="Year"
                   className="block mb-2 text-gray-600 text-sm font-medium "
                 >
-                  <span className='text-slightgray'>
+                  <span className="text-slightgray">
                     {/* Your Name<span className="text-red text-2xl">*</span> */}
                     Batch<span className="text-red text-2xl">*</span>
                   </span>{" "}
@@ -257,7 +266,7 @@ const Profile = () => {
                   onChange={(e) => {
                     setYear(e.target.value);
                   }}
-                  required
+                  // required
                 >
                   <option value="">Select</option>
                   {/* <option value={2027}></option> */}
@@ -276,9 +285,13 @@ const Profile = () => {
                   <span className={preahvihear.className}>Submit Details</span>
                 </span>
               </button> */}
-              
-                <button type="submit" 
-                className="mt-16 ml-1 text-white bg-gradient-to-r from-red-500 via-red-600 to-red-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-400 dark:focus:ring-red-800 shadow-md shadow-red-500/50 dark:shadow-lg dark:shadow-red-800/80 rounded-lg text-md font-semibold px-5 py-2.5 text-center me-2 mb-2 border border-red-800 hover:border-white hover:scale-105">Submit</button>
+
+              <button
+                type="submit"
+                className="mt-16 ml-1 text-white bg-gradient-to-r from-red-500 via-red-600 to-red-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-400 dark:focus:ring-red-800 shadow-md shadow-red-500/50 dark:shadow-lg dark:shadow-red-800/80 rounded-lg text-md font-semibold px-5 py-2.5 text-center me-2 mb-2 border border-red-800 hover:border-white hover:scale-105"
+              >
+                Submit
+              </button>
 
               {/* <button type="button" className="text-white bg-gradient-to-r from-purple-500 to-pink-500 hover:bg-gradient-to-l focus:ring-4 focus:outline-none focus:ring-purple-200 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">Purple to Pink</button> */}
             </form>
