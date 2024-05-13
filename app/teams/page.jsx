@@ -8,6 +8,7 @@ import { setTeam, setTeamRequest } from "@Reducers/features/team";
 import { useRouter } from "next/navigation";
 import axios from "axios";
 import { Preahvihear } from "next/font/google";
+import { setRequest } from "@Reducers/features/requests";
 
 const preahvihear = Preahvihear({
   subsets: ["latin"],
@@ -31,7 +32,7 @@ const Teams = () => {
       );
       if (data.success) {
         dispatch(setTeam(null));
-        dispatch(setTeamRequest(null));
+        dispatch(setTeamRequest([]));
       } else {
         alert(data?.message);
       }
@@ -40,14 +41,19 @@ const Teams = () => {
       console.log(error);
     }
   };
-  const handleRemoveRequest = async () => {
+  const handleRemoveRequest = async (id) => {
     try {
       setLoading(true);
       const { data } = await axios.patch(
-        `${process.env.NEXT_PUBLIC_BASE_URL}/api/team/confirm/${sentRequestFromTheTeam?._id}`
+        `${process.env.NEXT_PUBLIC_BASE_URL}/api/team/confirm/${id}`
       );
       if (data.success) {
-        dispatch(setTeamRequest(null));
+        dispatch(
+          setTeamRequest(
+            sentRequestFromTheTeam?.filter((team) => team._id === id)
+          )
+        );
+        console.log(sentRequestFromTheTeam);
       } else {
         alert(data?.message);
       }
@@ -56,14 +62,15 @@ const Teams = () => {
       console.log(error);
     }
   };
-  const handleRemoveMember = async () => {
+  const handleRemoveMember = async (memberId) => {
     try {
       setLoading(true);
       const { data } = await axios.patch(
-        `${process.env.NEXT_PUBLIC_BASE_URL}/api/team/${team?._id}`
+        `${process.env.NEXT_PUBLIC_BASE_URL}/api/team/${team?._id}`,
+        { memberId }
       );
       if (data?.success) {
-        dispatch(setTeamRequest(null));
+        dispatch(setTeamRequest([]));
         dispatch(setTeam(data.data));
       }
       setLoading(false);
@@ -98,6 +105,7 @@ const Teams = () => {
       );
       if (data.success) {
         dispatch(setTeamRequest(data.data));
+        dispatch(setTeam(data?.team));
         setTeamMemberEmail("");
       } else {
         alert(data?.message);
@@ -164,7 +172,6 @@ const Teams = () => {
           {isAlreadyInTeam ? (
             <section className="text-gray-600 w-full flex items-center justify-center body-font sm:mx-0 ">
               <div className="md:w-3/4 flex items-center justify-center w-full py-24">
-              
                 <div className="flex flex-wrap items-center justify-center md:w-full  lg:w-1/2 mainTeamButton">
                   <div className="bg-sbg rounded-lg p-2 w-11/12 md:w-3/4 hover:scale-105 shadow-md shadow-white">
                     <div className="flex border-2 rounded-lg border-white teaminnerbutton border-opacity-50 p-8 sm:flex-row flex-col">
@@ -202,21 +209,44 @@ const Teams = () => {
                             {team?.payment ? "Paid" : "Not Paid"}
                           </span>
                         </p>
-                        {team?.teamMemberConfirmation ? (
-                          <p className="leading-relaxed text-base text-slightgray mb-3">
-                            Team Member:{" "}
-                            <span className="text-white">
-                              {team?.teamMember.name}
-                            </span>{" "}
-                          </p>
+                        {team?.members?.length > 0 ? (
+                          team?.members?.map((member, i) => (
+                            <>
+                              <p
+                                className="leading-relaxed text-base text-slightgray mb-3"
+                                key={member._id}
+                              >
+                                Team Member{i + 1}:{" "}
+                                <span className="text-white">
+                                  {member.name}
+                                </span>{" "}
+                                {user?.id === team?.leader?._id &&
+                                  !team.payment && (
+                                    <button
+                                      onClick={() =>
+                                        handleRemoveMember(member._id)
+                                      }
+                                      className="relative mt-5 text-center inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-btnColorDark to-btnColor hover:text-white  focus:ring-4 focus:outline-none focus:ring-purple-200 "
+                                    >
+                                      <span className="relative px-5 py-2.5 transition-all ease-in bg-white text-gray-700 duration-75 rounded-md group-hover:bg-opacity-0 group-hover:text-white">
+                                        <span className={preahvihear.className}>
+                                          Kick Member
+                                        </span>
+                                      </span>
+                                    </button>
+                                  )}
+                              </p>
+                            </>
+                          ))
                         ) : (
                           <p className="leading-relaxed text-base text-slightgray mb-3">
                             Team Member:{" "}
                             <span className="text-white">Not Joined</span>
                           </p>
                         )}
-                        {!team?.teamMemberConfirmation &&
-                          !sentRequestFromTheTeam && (
+                        {sentRequestFromTheTeam.length < 2 &&
+                          team.members.length < 1 &&
+                          user?.id === team?.leader?._id && (
                             <form
                               className="space-y-8 "
                               onSubmit={handleSendRequest}
@@ -254,63 +284,52 @@ const Teams = () => {
                                     </span>
                                   </span>
                                 </button> */}
-                                <button type="submit" 
-                        onClick={handleRemoveRequest}
-                        className=" relative items-center justify-center mt-4 ml-1 text-white bg-gradient-to-r from-red-500 via-red-600 to-red-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-400 dark:focus:ring-red-800 shadow-md shadow-red-500/50 dark:shadow-lg dark:shadow-red-800/80 rounded-lg text-md font-semibold px-5 py-2.5 text-center me-2 mb-2 border border-red-800 hover:border-white hover:scale-105">
-                          Send
-                        </button>
+                                <button
+                                  type="submit"
+                                  onClick={handleSendRequest}
+                                  className=" relative items-center justify-center mt-4 ml-1 text-white bg-gradient-to-r from-red-500 via-red-600 to-red-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-400 dark:focus:ring-red-800 shadow-md shadow-red-500/50 dark:shadow-lg dark:shadow-red-800/80 rounded-lg text-md font-semibold px-5 py-2.5 text-center me-2 mb-2 border border-red-800 hover:border-white hover:scale-105"
+                                >
+                                  Send
+                                </button>
                               </div>
                             </form>
                           )}
 
-                        {!team?.teamMemberConfirmation &&
-                          sentRequestFromTheTeam && (
+                        {user?.id === team?.leader?._id &&
+                          !team.payment &&
+                          sentRequestFromTheTeam.map((request) => (
                             <h1 className="text-slightgray">
                               Request sent to:{" "}
                               <strong className="text-white">
-                                {sentRequestFromTheTeam?.teamMemberEmail}
+                                {request?.teamMemberEmail} ({" "}
+                                {!request?.isConfirmed
+                                  ? "not joined"
+                                  : "Joined"}
+                                ){" "}
+                                {user.id === team.leader._id &&
+                                  !team?.isCompleted &&
+                                  sentRequestFromTheTeam?.length > 0 && (
+                                    <button
+                                      type="submit"
+                                      onClick={() =>
+                                        handleRemoveRequest(request._id)
+                                      }
+                                      className=" relative items-center justify-center mt-4 ml-1 text-white bg-gradient-to-r from-red-500 via-red-600 to-red-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-400 dark:focus:ring-red-800 shadow-md shadow-red-500/50 dark:shadow-lg dark:shadow-red-800/80 rounded-lg text-md font-semibold px-5 py-2.5 text-center me-2 mb-2 border border-red-800 hover:border-white hover:scale-105"
+                                    >
+                                      Remove Request
+                                    </button>
+                                  )}
                               </strong>
                             </h1>
-                          )}
+                          ))}
                       </div>
                     </div>
                     {/* {console.log(qrData)} */}
 
                     <div className="flex flex-row justify-center items-center p-5">
-                      {user?.id === team?.leader?._id &&
-                        !team.payment &&
-                        team?.teamMemberConfirmation && (
-                          <button
-                            onClick={handleRemoveMember}
-                            className="relative mt-5 text-center inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-btnColorDark to-btnColor hover:text-white  focus:ring-4 focus:outline-none focus:ring-purple-200 "
-                          >
-                            <span className="relative px-5 py-2.5 transition-all ease-in bg-white text-gray-700 duration-75 rounded-md group-hover:bg-opacity-0 group-hover:text-white">
-                              <span className={preahvihear.className}>
-                                Kick Member
-                              </span>
-                            </span>
-                          </button>
-                        )}
                       {/* remove request */}
-                      {!team?.teamMemberConfirmation &&
-                        sentRequestFromTheTeam && (
-                          // <button
-                          //   onClick={handleRemoveRequest}
-                          //   className="relative mt-5 text-center inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-btnColorDark to-btnColor hover:text-white  focus:ring-4 focus:outline-none focus:ring-purple-200 "
-                          // >
-                          //   <span className="relative px-5 py-2.5 transition-all ease-in bg-white text-gray-700 duration-75 rounded-md group-hover:bg-opacity-0 group-hover:text-white">
-                          //     <span className={preahvihear.className}>
-                          //       Remove Request
-                          //     </span>
-                          //   </span>
-                          // </button>
-                          <button type="submit" 
-                        onClick={handleRemoveRequest}
-                        className=" relative items-center justify-center mt-4 ml-1 text-white bg-gradient-to-r from-red-500 via-red-600 to-red-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-400 dark:focus:ring-red-800 shadow-md shadow-red-500/50 dark:shadow-lg dark:shadow-red-800/80 rounded-lg text-md font-semibold px-5 py-2.5 text-center me-2 mb-2 border border-red-800 hover:border-white hover:scale-105">
-                          Remove Request
-                        </button>
-                        )}
-                      {team?.teamMemberConfirmation && (
+
+                      {team?.isCompleted && (
                         // <button
                         //   onClick={handleQr}
                         //   className="relative mt-5 text-center inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-btnColorDark to-btnColor hover:text-white  focus:ring-4 focus:outline-none focus:ring-purple-200 "
@@ -321,9 +340,11 @@ const Teams = () => {
                         //     </span>
                         //   </span>
                         // </button>
-                        <button type="submit" 
-                        onClick={handleQr}
-                        className=" relative items-center justify-center mt-4 ml-1 text-white bg-gradient-to-r from-red-500 via-red-600 to-red-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-400 dark:focus:ring-red-800 shadow-md shadow-red-500/50 dark:shadow-lg dark:shadow-red-800/80 rounded-lg text-md font-semibold px-5 py-2.5 text-center me-2 mb-2 border border-red-800 hover:border-white hover:scale-105">
+                        <button
+                          type="submit"
+                          onClick={handleQr}
+                          className=" relative items-center justify-center mt-4 ml-1 text-white bg-gradient-to-r from-red-500 via-red-600 to-red-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-400 dark:focus:ring-red-800 shadow-md shadow-red-500/50 dark:shadow-lg dark:shadow-red-800/80 rounded-lg text-md font-semibold px-5 py-2.5 text-center me-2 mb-2 border border-red-800 hover:border-white hover:scale-105"
+                        >
                           Submit
                         </button>
                       )}
@@ -341,11 +362,13 @@ const Teams = () => {
                           //     </span>
                           //   </span>
                           // </button>
-                          <button type="submit" 
-                        onClick={handleDelete}
-                        className=" relative items-center justify-center mt-4 ml-1 text-white bg-gradient-to-r from-red-500 via-red-600 to-red-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-400 dark:focus:ring-red-800 shadow-md shadow-red-500/50 dark:shadow-lg dark:shadow-red-800/80 rounded-lg text-md font-semibold px-5 py-2.5 text-center me-2 mb-2 border border-red-800 hover:border-white hover:scale-105">
-                          Delete Team
-                        </button>
+                          <button
+                            type="submit"
+                            onClick={handleDelete}
+                            className=" relative items-center justify-center mt-4 ml-1 text-white bg-gradient-to-r from-red-500 via-red-600 to-red-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-400 dark:focus:ring-red-800 shadow-md shadow-red-500/50 dark:shadow-lg dark:shadow-red-800/80 rounded-lg text-md font-semibold px-5 py-2.5 text-center me-2 mb-2 border border-red-800 hover:border-white hover:scale-105"
+                          >
+                            Delete Team
+                          </button>
                         ) : (
                           // <button
                           //   type="submit"
@@ -358,11 +381,13 @@ const Teams = () => {
                           //     </span>
                           //   </span>
                           // </button>
-                          <button type="submit" 
-                        onClick={handleLeaveTeam}
-                        className=" relative items-center justify-center mt-4 ml-1 text-white bg-gradient-to-r from-red-500 via-red-600 to-red-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-400 dark:focus:ring-red-800 shadow-md shadow-red-500/50 dark:shadow-lg dark:shadow-red-800/80 rounded-lg text-md font-semibold px-5 py-2.5 text-center me-2 mb-2 border border-red-800 hover:border-white hover:scale-105">
-                          Leave Team
-                        </button>
+                          <button
+                            type="submit"
+                            onClick={handleLeaveTeam}
+                            className=" relative items-center justify-center mt-4 ml-1 text-white bg-gradient-to-r from-red-500 via-red-600 to-red-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-400 dark:focus:ring-red-800 shadow-md shadow-red-500/50 dark:shadow-lg dark:shadow-red-800/80 rounded-lg text-md font-semibold px-5 py-2.5 text-center me-2 mb-2 border border-red-800 hover:border-white hover:scale-105"
+                          >
+                            Leave Team
+                          </button>
                         )
                       ) : null}
                     </div>
@@ -428,10 +453,12 @@ const Teams = () => {
                           </span>
                         </p>
                         <Link href="teams/join-team">
-                        <button type="submit" 
-                        className=" relative items-center justify-center mt-4 ml-1 text-white bg-gradient-to-r from-red-500 via-red-600 to-red-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-400 dark:focus:ring-red-800 shadow-md shadow-red-500/50 dark:shadow-lg dark:shadow-red-800/80 rounded-lg text-md font-semibold px-5 py-2.5 text-center me-2 mb-2 border border-red-800 hover:border-white hover:scale-105">
-                          Join Team
-                        </button>
+                          <button
+                            type="submit"
+                            className=" relative items-center justify-center mt-4 ml-1 text-white bg-gradient-to-r from-red-500 via-red-600 to-red-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-400 dark:focus:ring-red-800 shadow-md shadow-red-500/50 dark:shadow-lg dark:shadow-red-800/80 rounded-lg text-md font-semibold px-5 py-2.5 text-center me-2 mb-2 border border-red-800 hover:border-white hover:scale-105"
+                          >
+                            Join Team
+                          </button>
                         </Link>
                       </div>
                     </div>
@@ -464,10 +491,12 @@ const Teams = () => {
                           </span>
                         </p>
                         <Link href="/teams/create-team">
-                        <button type="submit" 
-                        className=" relative items-center justify-center mt-4 ml-1 text-white bg-gradient-to-r from-red-500 via-red-600 to-red-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-400 dark:focus:ring-red-800 shadow-md shadow-red-500/50 dark:shadow-lg dark:shadow-red-800/80 rounded-lg text-md font-semibold px-5 py-2.5 text-center me-2 mb-2 border border-red-800 hover:border-white hover:scale-105">
-                          Create Team
-                        </button>
+                          <button
+                            type="submit"
+                            className=" relative items-center justify-center mt-4 ml-1 text-white bg-gradient-to-r from-red-500 via-red-600 to-red-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-400 dark:focus:ring-red-800 shadow-md shadow-red-500/50 dark:shadow-lg dark:shadow-red-800/80 rounded-lg text-md font-semibold px-5 py-2.5 text-center me-2 mb-2 border border-red-800 hover:border-white hover:scale-105"
+                          >
+                            Create Team
+                          </button>
                         </Link>
                       </div>
                     </div>

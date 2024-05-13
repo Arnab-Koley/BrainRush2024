@@ -20,18 +20,22 @@ const createTeam = () => {
   const router = useRouter();
   const [loading, setLoading] = useState(false);
   const [teamName, setTeamName] = useState("");
-  const [teamMemberEmail, setTeamMemberEmail] = useState("");
+  const [teamMemberEmail1, setTeamMemberEmail1] = useState("");
+  const [teamMemberEmail2, setTeamMemberEmai2] = useState("");
 
-  const [text, setText] = useState('');
+  const [text, setText] = useState("");
   const [errorMessage2, setErrorMessage2] = useState(null);
-  const [style1, setStyle1]=useState("shadow-white");
+  const [style1, setStyle1] = useState("shadow-white");
+  const [email, setEmail] = useState("");
+  const [errorMessage, setErrorMessage] = useState(null);
+  const [style2, setStyle2] = useState("shadow-white");
 
   const handleChange2 = (event) => {
-    const newText = event.target.value;  // Remove non-alphabets and spaces
-    setText(newText.replace(/[^a-zA-Z ]/g, ''));
+    const newText = event.target.value; // Remove non-alphabets and spaces
+    setText(newText.replace(/[^a-zA-Z ]/g, ""));
 
     if (newText.length > 0 && !/^[a-zA-Z ]+$/.test(newText)) {
-      setErrorMessage2('Only alphabets and spaces are allowed.');
+      setErrorMessage2("Only alphabets and spaces are allowed.");
       setStyle1("shadow-sheader");
     } else {
       setErrorMessage2(null);
@@ -39,21 +43,17 @@ const createTeam = () => {
     }
   };
 
-  const [email, setEmail] = useState('');
-  const [errorMessage, setErrorMessage] = useState(null);
-  const [style2, setStyle2]=useState("shadow-white");
-
   const handleChange1 = (event) => {
     const newEmail = event.target.value; // Capture original input
 
     // Update email state with filtered value (remove invalid characters)
-    const filteredEmail = newEmail.replace(/[^a-z0-9@_.-]/g, '');
+    const filteredEmail = newEmail.replace(/[^a-z0-9@_.-]/g, "");
     setEmail(filteredEmail);
 
     // Check for invalid characters directly
     const invalidChars = newEmail.match(/[^a-z0-9@_.-]/g);
     if (invalidChars) {
-      const errorMessage = `Invalid character(s): ${invalidChars.join(', ')}`;
+      const errorMessage = `Invalid character(s): ${invalidChars.join(", ")}`;
       setErrorMessage(errorMessage);
       setStyle2("shadow-sheader");
     } else {
@@ -68,15 +68,16 @@ const createTeam = () => {
       setLoading(true);
       const { data } = await axios.post(
         `${process.env.NEXT_PUBLIC_BASE_URL}/api/team`,
-        { teamName:text, teamMemberEmail:email }
+        { teamName: text, teamMemberEmails: [email, teamMemberEmail2] }
       );
-
+      console.log(data);
       if (data.success) {
         dispatch(setTeam(data.data));
         dispatch(
-          setTeamRequest(
-            data.confirmationRequest ? data.confirmationRequest : null
-          )
+          setTeamRequest([
+            data.confirmationRequest1 ? data.confirmationRequest1 : null,
+            data.confirmationRequest2 ? data.confirmationRequest2 : null,
+          ])
         );
         setStyle1("shadow-white");
         setStyle2("shadow-white");
@@ -98,31 +99,31 @@ const createTeam = () => {
   ) : (
     <>
       <section className="p-2">
-      <button className="p-6">
-                <Link href="/teams">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke-width="3"
-                    stroke="white"
-                    class="w-8 h-8"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      d="M9 15 3 9m0 0 6-6M3 9h12a6 6 0 0 1 0 12h-3"
-                    />
-                  </svg>
-                </Link>
-              </button>
+        <button className="p-6">
+          <Link href="/teams">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="3"
+              stroke="white"
+              class="w-8 h-8"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M9 15 3 9m0 0 6-6M3 9h12a6 6 0 0 1 0 12h-3"
+              />
+            </svg>
+          </Link>
+        </button>
         <div className="py-8 mb-8 bg-sbg rounded-lg lg:py-16 px-4 mt-0 md:mt-12 mx-auto max-w-screen-md">
           <h2 className="mb-4 text-4xl tracking-tight font-extrabold text-center text-headerText ">
             <span className="text-white">Create Your Team</span>
           </h2>
 
           <p className="mb-8 lg:mb-16 font-medium text-center text-subHeaderText sm:text-xl">
-            <span >
+            <span>
               Create your own team by entering your team name and your team
               mate's email!
             </span>
@@ -147,7 +148,12 @@ const createTeam = () => {
                 value={text}
                 onChange={handleChange2}
               />
-              {errorMessage2 && <div className="error-message2 pt-2 pl-3 text-sheader">{'! '}{errorMessage2}</div>}
+              {errorMessage2 && (
+                <div className="error-message2 pt-2 pl-3 text-sheader">
+                  {"! "}
+                  {errorMessage2}
+                </div>
+              )}
             </div>
             <div>
               <label
@@ -168,12 +174,45 @@ const createTeam = () => {
                 value={email}
                 onChange={handleChange1}
               />
-              {errorMessage && <div className="error-message2 pt-2 pl-3 text-sheader">{'! '}{errorMessage}</div>}
+              {errorMessage && (
+                <div className="error-message2 pt-2 pl-3 text-sheader">
+                  {"! "}
+                  {errorMessage}
+                </div>
+              )}
+            </div>
+            <div>
+              <label
+                htmlFor="subject"
+                className="block mb-2 text-gray-400 text-xl font-medium "
+              >
+                <span className=" text-gray-400">
+                  {/* Your Name<span className="text-red text-2xl">*</span> */}
+                  Team Member Email<span className="text-red text-2xl">*</span>
+                </span>{" "}
+              </label>
+              <input
+                type="email"
+                id="email"
+                className={`shadow-md h-2 lg:h-full bg-inputBgColor border-gray-300 text-white text-xl rounded-lg focus:ring-primary-500 focus:border-gray-50 block w-full p-2.5 placeholder-gray-400 ${style2} `}
+                placeholder="Team Member Email"
+                required
+                value={teamMemberEmail2}
+                onChange={(e) => setTeamMemberEmai2(e.target.value)}
+              />
+              {errorMessage && (
+                <div className="error-message2 pt-2 pl-3 text-sheader">
+                  {"! "}
+                  {errorMessage}
+                </div>
+              )}
             </div>
 
-            <button type="submit" 
-                        className=" relative items-center justify-center mt-4 ml-1 text-white bg-gradient-to-r from-red-500 via-red-600 to-red-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-400 dark:focus:ring-red-800 shadow-md shadow-red-500/50 dark:shadow-lg dark:shadow-red-800/80 rounded-lg text-md font-semibold px-5 py-2.5 text-center me-2 mb-2 border border-red-800 hover:border-white hover:scale-105">
-                          Submit
+            <button
+              type="submit"
+              className=" relative items-center justify-center mt-4 ml-1 text-white bg-gradient-to-r from-red-500 via-red-600 to-red-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-400 dark:focus:ring-red-800 shadow-md shadow-red-500/50 dark:shadow-lg dark:shadow-red-800/80 rounded-lg text-md font-semibold px-5 py-2.5 text-center me-2 mb-2 border border-red-800 hover:border-white hover:scale-105"
+            >
+              Submit
             </button>
 
             {/* <button type="button" className="text-white bg-gradient-to-r from-purple-500 to-pink-500 hover:bg-gradient-to-l focus:ring-4 focus:outline-none focus:ring-purple-200  font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">Purple to Pink</button> */}
@@ -186,5 +225,3 @@ const createTeam = () => {
 };
 
 export default createTeam;
-
-

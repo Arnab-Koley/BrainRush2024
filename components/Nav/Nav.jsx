@@ -56,16 +56,15 @@ function Navbar() {
         `${process.env.NEXT_PUBLIC_BASE_URL}/api/team`
       );
       dispatch(setTeam(data.data === undefined ? null : data.data));
-      dispatch(
-        setTeamRequest(data.request === undefined ? null : data.request)
-      );
+      dispatch(setTeamRequest(data?.request?.length === 0 ? [] : data.request));
     } catch (err) {
       console.log(err);
     }
   };
 
   const getProfileDetails = async () => {
-    try {// Update the button elements in your Navbar component
+    try {
+      // Update the button elements in your Navbar component
       <button
         type="button"
         className="flex mr-3 text-sm bg-gray-800 rounded-full md:mr-0 navbar-button"
@@ -83,8 +82,8 @@ function Navbar() {
           height={50}
           width={50}
         />
-      </button>
-      
+      </button>;
+
       const { data } = await axios.get(
         `${process.env.NEXT_PUBLIC_BASE_URL}/api/user`
       );
@@ -183,8 +182,9 @@ function Navbar() {
                   />
                 </button>
                 <div
-                  className={`${isUserDropdownOpen ? "block" : "hidden"
-                    } absolute right-0 mt-2 text-base list-none bg-white divide-y rounded-lg shadowdivide-gray-600 z-20`}
+                  className={`${
+                    isUserDropdownOpen ? "block" : "hidden"
+                  } absolute right-0 mt-2 text-base list-none bg-white divide-y rounded-lg shadowdivide-gray-600 z-20`}
                   id="user-dropdown"
                 >
                   <div className="px-4 py-3">
@@ -208,7 +208,9 @@ function Navbar() {
                         href="/profile"
                         className="block px-4 py-2 text-xl text-gray-900 hover:bg-gray-100 mb-2"
                       >
-                        <span className={preahvihear.className}>My Profile</span>
+                        <span className={preahvihear.className}>
+                          My Profile
+                        </span>
                       </Link>
                     </li>
                     <li>
@@ -217,7 +219,9 @@ function Navbar() {
                         className="relative inline-flex items-center ml-2 justify-center p-0.5 pr-2 mb-2  overflow-hidden text-xs font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-btnColorDark to-btnColor group-hover:from-btnColorDark group-hover:to-btnColor hover:text-white  focus:ring-4 focus:outline-none focus:ring-purple-200 "
                       >
                         <span className="relative px-3 py-2 transition-all ease-in duration-75 bg-white text-gray-700 rounded-md hover:text-gray-100 group-hover:bg-opacity-0">
-                          <span className={preahvihear.className}>Sign Out</span>{" "}
+                          <span className={preahvihear.className}>
+                            Sign Out
+                          </span>{" "}
                         </span>
                       </button>
                     </li>
@@ -262,7 +266,9 @@ function Navbar() {
                       <button
                         className="relative inline-flex items-center justify-center p-0.5 pr-2 mb-0  overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-btnColorDark to-btnColor group-hover:from-btnColorDark group-hover:to-btnColor hover:text-white  focus:ring-4 focus:outline-none focus:ring-purple-200 "
                         key={provider.name}
-                        onClick={() => signIn(provider.id, { callbackUrl: "/" })}
+                        onClick={() =>
+                          signIn(provider.id, { callbackUrl: "/" })
+                        }
                       >
                         <span className="relative px-3 py-2 transition-all ease-in duration-75 bg-white text-gray-700 rounded-md hover:text-gray-100 group-hover:bg-opacity-0">
                           <span className={preahvihear.className}>Sign In</span>
@@ -311,8 +317,9 @@ function Navbar() {
             </>
           )}
           <div
-            className={`items-center justify-between ${isMainMenuOpen ? "flex" : "hidden"
-              } w-full md:flex md:w-auto md:order-1`}
+            className={`items-center justify-between ${
+              isMainMenuOpen ? "flex" : "hidden"
+            } w-full md:flex md:w-auto md:order-1`}
             id="navbar-user"
           >
             <ul className="flex flex-col font-medium p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-white-500 md:flex-row md:space-x-8 md:mt-0 md:border-0 w-full md:bg-white ">

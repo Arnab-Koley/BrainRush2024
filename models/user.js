@@ -16,15 +16,12 @@ const userSchema = new Schema(
     },
     year: {
       type: Number,
-      required: [true, "Year is required"],
     },
     department: {
       type: String,
-      required: [true, "Department is required"],
     },
     phoneNumber: {
       type: String,
-      required: [true, "Phone Number is required"],
     },
   },
   { timestamps: true }
